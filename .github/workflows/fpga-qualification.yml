@@ -41,6 +41,10 @@ jobs:
         run: |
           yosys -l build/sdram-bridge-yosys.log -p 'read_verilog fpga/retrocore/platform/sdram_bridge.v fpga/retrocore/platform/sdram_model.v fpga/retrocore/platform/sdram_qual_top.v; synth_ecp5 -top sdram_qual_top -json build/sdram-bridge.json'
 
+      - name: Synthesize SDR SDRAM controller
+        run: |
+          yosys -l build/sdram-controller-yosys.log -p 'read_verilog fpga/retrocore/platform/sdram_controller.v fpga/retrocore/platform/sdram_controller_qual_top.v; synth_ecp5 -top sdram_controller_qual_top -json build/sdram-controller.json'
+
       - name: Fetch pinned Minimig-AGA upstream
         run: |
           chmod +x fpga/qualification/fetch-minimig-aga.sh
