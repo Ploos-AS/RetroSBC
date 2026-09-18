@@ -1,0 +1,47 @@
+name: M0 repository checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  repository:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Required M0 files
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(
+            README.md
+            ROADMAP.md
+            CONTRIBUTING.md
+            LICENSE
+            docs/ARCHITECTURE.md
+            docs/HARDWARE.md
+            docs/RETROCORE.md
+            docs/RETROBUS.md
+            docs/M0_QUALIFICATION.md
+          )
+          for f in "${required[@]}"; do
+            test -s "$f" || { echo "Missing or empty: $f"; exit 1; }
+          done
+
+      - name: Reject common private retro asset paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git ls-files | grep -E '(^|/)(roms|assets/private|images/private)/' ; then
+            echo "Private/proprietary runtime asset path is tracked."
+            exit 1
+          fi
+
+      - name: Check Markdown for conflict markers
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -R -n -E '^(<<<<<<<|=======|>>>>>>>)' --include='*.md' . ; then
+            echo "Merge conflict marker found."
+            exit 1
+          fi
