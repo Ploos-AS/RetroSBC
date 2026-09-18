@@ -31,3 +31,8 @@ The FPGA qualification workflow now retains:
 ## PASS gate
 
 M3.2 becomes PASS only when a representative AGA machine build completes Yosys synthesis and nextpnr for the ECP5UM-85F target and reports utilization/timing. Until then, capacity remains strongly plausible but unproven on ECP5.
+
+
+## CI observability fix
+
+The workflow is now enabled for pull requests as well as push/manual dispatch. This makes qualification runs inspectable through the repository integration used for project qualification and gives future adapter changes an explicit pre-merge FPGA gate.
