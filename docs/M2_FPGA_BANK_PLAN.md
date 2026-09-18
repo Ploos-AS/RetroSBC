@@ -1,6 +1,6 @@
 # M2 — FPGA Bank Planning
 
-Target family: Lattice ECP5UM-45F, BG381 planning package.
+Target family: Lattice ECP5UM-85F, BG381 planning package.
 
 This file defines functional ownership before assigning physical pins.
 
