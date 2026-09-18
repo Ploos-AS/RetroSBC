@@ -11,7 +11,7 @@
 
 **Exit criterion:** architecture and constraints are documented without pretending that unqualified component choices are final.
 
-## M1 — Component and interface qualification
+## M1 — Component and interface qualification — PASS (open procurement gates)
 
 - Qualify SpacemiT B1/K1 sourcing and documentation.
 - Confirm compute-module electrical and mechanical integration requirements.
