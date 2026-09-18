@@ -1,0 +1,36 @@
+name: FPGA qualification
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "fpga/**"
+      - ".github/workflows/fpga-qualification.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  ecp5-85k-smoke:
+    runs-on: ubuntu-latest
+    container:
+      image: hdlc/impl:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tool versions
+        run: |
+          yosys -V
+          nextpnr-ecp5 --version
+      - name: Synthesize ECP5 smoke RTL
+        run: |
+          mkdir -p build
+          yosys -l build/yosys.log -p 'read_verilog fpga/qualification/ecp5_85k_smoke.v; synth_ecp5 -top ecp5_85k_smoke -json build/smoke.json'
+      - name: Validate 85K target is available
+        run: |
+          nextpnr-ecp5 --help 2>&1 | tee build/nextpnr-help.txt
+          grep -Eq -- '--um5g-85k|--85k' build/nextpnr-help.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ecp5-85k-smoke-logs
+          path: build/
