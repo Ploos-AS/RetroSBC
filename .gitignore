@@ -1,0 +1,25 @@
+# Editors / OS
+*~
+*.swp
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# FPGA build products
+build/
+*.bit
+*.svf
+*.jed
+
+# KiCad generated/local files
+*-backups/
+*.lck
+fp-info-cache
+
+# Local runtime assets
+assets/private/
+roms/
+images/private/
