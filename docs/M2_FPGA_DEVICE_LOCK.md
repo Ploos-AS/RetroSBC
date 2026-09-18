@@ -2,7 +2,7 @@
 
 ## Baseline OPN
 
-`LFE5UM-45F-7BG381I`
+`LFE5UM-85F-7BG381I`
 
 Family: ECP5UM (SERDES)
 Logic class: 45K
@@ -12,7 +12,7 @@ Speed grade: -7 baseline
 
 ## Why UM matters
 
-The plain LFE5U family does not provide the SERDES resources required by the planned FPGA PCIe path. The schematic/BOM must therefore reject accidental substitution of an `LFE5U-45F` for an `LFE5UM-45F`.
+The plain LFE5U family does not provide the SERDES resources required by the planned FPGA PCIe path. The schematic/BOM must therefore reject accidental substitution of an `LFE5U-45F` for an `LFE5UM-85F`.
 
 ## Configuration
 
