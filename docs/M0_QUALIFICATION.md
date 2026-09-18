@@ -14,7 +14,10 @@ M0 qualifies the repository foundation and architecture documentation only. It d
 - [x] Roadmap
 - [x] Contribution policy
 - [x] Repository hygiene
-- [x] Software license
+- [x] CERN-OHL-P-2.0 hardware license
+- [x] MIT software license
+- [x] Vendor-neutral MANUFACTURING.md and ORDERING.md
+- [x] Fail-closed manufacturing workflow
 
 ## M0 decisions
 
