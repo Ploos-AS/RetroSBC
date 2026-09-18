@@ -15,7 +15,7 @@ always @(posedge clk) if(!csn) begin
  if(rasn && !casn && wen) read_count=read_count+1;
  if(rasn && !casn && !wen) write_count=write_count+1;
 end
-task wait_ready; integer n; begin n=0; while(!ready && n<100) begin @(posedge clk); n=n+1; end if(!ready) $fatal(1,"timeout waiting for ready"); end endtask
+task wait_ready; integer n; begin n=0; while(!ready && n<100) begin @(posedge clk); #1; n=n+1; end if(!ready) $fatal(1,"timeout waiting for ready"); end endtask
 initial begin
  repeat(3) @(posedge clk); reset=0;
  repeat(30) @(posedge clk);
@@ -23,10 +23,10 @@ initial begin
  if(pre_count<1) $fatal(1,"missing PRECHARGE ALL");
  if(refresh_count<2) $fatal(1,"missing initialization refreshes");
  if(mrs_count<1) $fatal(1,"missing mode register set");
- addr=25'h12345; be=2'b11; we=0; req=1; @(posedge clk); req=0; wait_ready();
+ addr=25'h12345; be=2'b11; we=0; @(negedge clk); req=1; @(negedge clk); req=0; wait_ready();
  if(read_count<1) $fatal(1,"READ command missing");
  if(rdata!==16'hCAFE) $fatal(1,"read data mismatch");
- addr=25'h23456; wdata=16'hBEEF; be=2'b01; we=1; req=1; @(posedge clk); req=0; wait_ready();
+ addr=25'h23456; wdata=16'hBEEF; be=2'b01; we=1; @(negedge clk); req=1; @(negedge clk); req=0; wait_ready();
  if(write_count<1) $fatal(1,"WRITE command missing");
  if(dqm!==2'b10) $fatal(1,"byte mask mismatch");
  repeat(25) @(posedge clk);
