@@ -15,10 +15,10 @@ always @(posedge clk) if(!csn) begin
  if(rasn && !casn && wen) read_count=read_count+1;
  if(rasn && !casn && !wen) write_count=write_count+1;
 end
-task wait_ready; integer n; begin n=0; while(!ready && n<100) begin @(posedge clk); #1; n=n+1; end if(!ready) $fatal(1,"timeout waiting for ready"); end endtask
+task wait_ready; integer n; begin n=0; while(!ready && n<100) begin @(posedge clk); #1; n=n+1; end if(!ready) $fatal(1,"timeout waiting for ready state=%0d refresh=%0d req=%0b",dut.state,dut.refresh,req); end endtask
 initial begin
  repeat(3) @(posedge clk); reset=0;
- repeat(30) @(posedge clk);
+ wait(dut.state==8); @(posedge clk); #1;
  if(!cke) $fatal(1,"CKE not enabled");
  if(pre_count<1) $fatal(1,"missing PRECHARGE ALL");
  if(refresh_count<2) $fatal(1,"missing initialization refreshes");
