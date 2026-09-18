@@ -1,0 +1,4 @@
+UPSTREAM_REPOSITORY=https://github.com/MiSTer-devel/Minimig-AGA_MiSTer.git
+UPSTREAM_BRANCH=MiSTer
+UPSTREAM_COMMIT=c1134acf81f3b2ec624b22c8bc6a28465ec093db
+# Upstream licensing/provenance must be preserved. Do not copy/relicense as native RetroSBC RTL.
