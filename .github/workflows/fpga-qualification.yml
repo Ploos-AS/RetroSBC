@@ -2,6 +2,10 @@ name: FPGA qualification
 
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - "fpga/**"
+      - ".github/workflows/fpga-qualification.yml"
   push:
     paths:
       - "fpga/**"
