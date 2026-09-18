@@ -3,7 +3,7 @@
 | Function | Baseline | Lock |
 |---|---|---|
 | Compute | SpacemiT B1/K1, 8 GiB target | family locked; SKU open |
-| FPGA | LFE5UM-45F-7BG381I | design baseline locked |
+| FPGA | LFE5UM-85F-7BG381I | design baseline locked |
 | FPGA RAM | >=256 Mbit x16 3.3 V SDR SDRAM | class locked; MPN open |
 | FPGA config | 128 Mbit 3.3 V SPI/QSPI NOR | class locked; MPN open |
 | FPGA core regulator | 1.1 V | rail locked; MPN open |
