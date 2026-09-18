@@ -14,11 +14,11 @@ The exact B1 memory/order code remains a procurement gate; Rev A targets 8 GiB.
 
 Rev-A planning device is locked to:
 
-**LFE5UM-45F-7BG381I**
+**LFE5UM-85F-7BG381I**
 
 Rationale:
 - ECP5UM, not ECP5U, preserves SERDES;
-- 45K class is the established capacity baseline;
+- 85K class is the established capacity baseline;
 - BG381 provides substantially more board I/O flexibility than the smallest packages;
 - industrial grade is appropriate for a development platform;
 - -7 is a balanced speed-grade baseline rather than assuming the fastest grade is necessary.
