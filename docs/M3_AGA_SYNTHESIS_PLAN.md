@@ -30,10 +30,10 @@ Therefore a failed direct Yosys build would not mean the 85F lacks capacity; ven
 - [ ] run CI and retain utilization/timing logs.
 
 ### M3.1 — upstream audit
-- [ ] pin an exact Minimig-AGA upstream revision;
-- [ ] record upstream license/provenance;
-- [ ] classify portable RTL vs MiSTer/Cyclone-V integration;
-- [ ] enumerate required ECP5 adapters.
+- [x] pin an exact Minimig-AGA upstream revision;
+- [x] record upstream license/provenance;
+- [x] classify portable RTL vs MiSTer/Cyclone-V integration;
+- [x] enumerate required ECP5 adapters.
 
 ### M3.2 — AGA synthesis
 - [ ] synthesize portable/adapted AGA design with Yosys;
