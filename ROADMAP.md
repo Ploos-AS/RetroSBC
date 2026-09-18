@@ -24,7 +24,7 @@
 - Decide storage, Ethernet and USB topology.
 - Produce preliminary BOM and risk register.
 
-## M2 — Schematic architecture
+## M2 — Schematic architecture — IN PROGRESS
 
 - Capture hierarchical KiCad schematic.
 - Compute-module interface.
