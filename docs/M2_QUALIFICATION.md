@@ -17,7 +17,9 @@ Status: **PARTIAL / PRE-CAPTURE**
 - [ ] obtain/verify current B1 carrier design documentation
 - [ ] freeze exact B1 SKU
 - [ ] freeze exact ECP5UM ordering code/package/speed grade
-- [ ] choose FPGA SDRAM MPN
+- [x] lock FPGA SDRAM class/capacity
+- [ ] choose FPGA SDRAM production MPN
+- [x] define rail architecture and power-budget method
 - [ ] calculate rail load/current budget
 - [ ] bind B1 interface pins
 - [ ] bind FPGA physical pins/banks
