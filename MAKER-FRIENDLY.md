@@ -12,6 +12,8 @@ Avoid manufacturer-specific processes when broadly supported alternatives are pr
 
 ## Components
 
+Component and BOM selection also follows [COMPONENT-POLICY.md](COMPONENT-POLICY.md).
+
 Prefer parts that are actively available, have documented substitutes where practical, and are easy for makers to identify and source. Prefer hand-solderable packages and through-hole parts where they materially improve accessibility, learning, socketing or repair.
 
 Avoid BGA, very fine-pitch packages, blind/buried vias, via-in-pad and similar specialized processes unless required by the design. RetroSBC's compute module and high-speed architecture may necessarily introduce maker-unfriendly technologies; keep those complexities contained where practical so maker-accessible I/O, expansion, debug and repair remain first-class goals.
