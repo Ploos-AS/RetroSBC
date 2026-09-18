@@ -2,6 +2,8 @@
 
 This project is open hardware. You may manufacture the hardware yourself or use any suitable PCB manufacturer. Ploos AS does not require a particular manufacturer.
 
+RetroSBC follows the Ploos-AS [Maker-Friendly Hardware Standard](MAKER-FRIENDLY.md): **maker friendly first, cost second**, with documented exceptions for necessary multilayer/high-speed requirements.
+
 ## Policy
 
 Ploos-AS hardware projects follow these rules:
