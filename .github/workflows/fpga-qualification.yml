@@ -29,6 +29,27 @@ jobs:
         run: |
           nextpnr-ecp5 --help 2>&1 | tee build/nextpnr-help.txt
           grep -Eq -- '--um5g-85k|--85k' build/nextpnr-help.txt
+      - name: Fetch pinned Minimig-AGA upstream
+        run: |
+          chmod +x fpga/qualification/fetch-minimig-aga.sh
+          fpga/qualification/fetch-minimig-aga.sh
+          test "$(cat build/upstream/minimig-aga/RETROSBC_PINNED_REVISION)" = "$(sed -n 's/^UPSTREAM_COMMIT=//p' fpga/qualification/minimig-aga.lock)"
+
+      - name: Audit upstream portability blockers
+        run: |
+          mkdir -p build
+          {
+            echo "# M3.2 upstream audit"
+            echo
+            echo "Pinned revision: $(cat build/upstream/minimig-aga/RETROSBC_PINNED_REVISION)"
+            echo
+            echo "## Intel/Altera-specific references"
+            grep -RIlE 'altera|cyclone|ALTPLL|altera_pll|arria|quartus|HPS' build/upstream/minimig-aga --include='*.v' --include='*.sv' --include='*.vhd' --include='*.qsf' --include='*.sdc' 2>/dev/null | sed 's#build/upstream/minimig-aga/##' | sort -u || true
+            echo
+            echo "## Candidate HDL inventory"
+            find build/upstream/minimig-aga -type f \( -name '*.v' -o -name '*.sv' -o -name '*.vhd' \) | sed 's#build/upstream/minimig-aga/##' | sort
+          } > build/m3_2-upstream-audit.md
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
