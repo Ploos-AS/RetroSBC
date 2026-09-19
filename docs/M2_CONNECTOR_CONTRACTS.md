@@ -50,3 +50,8 @@ Dedicated access is required for:
 - FPGA configuration/recovery.
 
 Production test pads may duplicate these signals for a bed-of-nails fixture.
+
+
+## Rev-A DB9 retro controller ports
+
+Rev-A shall provide **2 x DE-9 (DB9) controller ports** as first-class FPGA-facing interfaces. Baseline mode is Atari/Amiga/C64-compatible digital joystick signalling (directions + fire), through protected level translation rather than raw FPGA I/O. Core-specific mouse, paddle, extra-button or bidirectional modes require explicit electrical mapping and qualification. See `M3_3_CORE_COMPATIBILITY.md`.
