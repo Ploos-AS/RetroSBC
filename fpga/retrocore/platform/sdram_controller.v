@@ -43,9 +43,9 @@ always @(posedge clk) begin
  end
  ST_ACT: begin sdram_ras_n<=0;sdram_ba<=la[24:23];sdram_a<=la[22:10];timer<=0;state<=ST_TRCD;end
  ST_TRCD: if(timer>=TRCD-1) begin timer<=0;state<=lwe?ST_WRITE:ST_READ;end else timer<=timer+1;
- ST_READ: begin sdram_cas_n<=0;sdram_ba<=la[24:23];sdram_a<={3'b001,la[9:0]};sdram_dqm<=~lbe;timer<=0;state<=ST_CAS;end
+ ST_READ: begin sdram_cas_n<=0;sdram_ba<=la[24:23];sdram_a<={3'b000,la[9:0]};sdram_dqm<=~lbe;timer<=0;state<=ST_CAS;end
  ST_CAS: if(timer>=CAS_LATENCY-1) begin rdata<=dq_in;timer<=0;state<=ST_PRECHARGE;end else timer<=timer+1;
- ST_WRITE: begin sdram_cas_n<=0;sdram_we_n<=0;sdram_ba<=la[24:23];sdram_a<={3'b001,la[9:0]};sdram_dqm<=~lbe;dq_out<=lwd;dq_oe<=1;state<=ST_PRECHARGE;end
+ ST_WRITE: begin sdram_cas_n<=0;sdram_we_n<=0;sdram_ba<=la[24:23];sdram_a<={3'b000,la[9:0]};sdram_dqm<=~lbe;dq_out<=lwd;dq_oe<=1;state<=ST_PRECHARGE;end
  ST_PRECHARGE: begin sdram_ras_n<=0;sdram_we_n<=0;sdram_a[10]<=1;timer<=0;state<=ST_WAITRP;end
  ST_WAITRP: if(timer>=TRP-1) begin ready<=1;timer<=0;state<=ST_IDLE;end else timer<=timer+1;
  ST_REFRESH: begin sdram_ras_n<=0;sdram_cas_n<=0;timer<=0;state<=ST_WAITRFC;end
