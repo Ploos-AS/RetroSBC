@@ -45,6 +45,17 @@ jobs:
         run: |
           yosys -l build/sdram-controller-yosys.log -p 'read_verilog fpga/retrocore/platform/sdram_controller.v fpga/retrocore/platform/sdram_controller_qual_top.v; synth_ecp5 -top sdram_controller_qual_top -json build/sdram-controller.json'
 
+      - name: Install Icarus Verilog
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends iverilog
+
+      - name: Simulate SDRAM controller protocol
+        run: |
+          iverilog -g2012 -o build/tb-sdram-controller fpga/retrocore/platform/sdram_controller.v fpga/qualification/tb_sdram_controller.v
+          vvp build/tb-sdram-controller | tee build/sdram-controller-simulation.log
+          grep -q '^PASS ' build/sdram-controller-simulation.log
+
       - name: Fetch pinned Minimig-AGA upstream
         run: |
           chmod +x fpga/qualification/fetch-minimig-aga.sh
