@@ -18,7 +18,8 @@ A RetroSBC wrapper may provide:
 - Linux-host control/asset loading;
 - video path;
 - audio;
-- USB keyboard/mouse/gamepad via host;
+- PS/2 keyboard and mouse paths for both Linux and FPGA domains;
+- USB keyboard/mouse/gamepad as host-side fallback;
 - physical DB9 ports;
 - independent Linux-host and FPGA serial ports;
 - MIDI;
@@ -85,3 +86,25 @@ Required design goals:
 - hardware flow-control signals where connector/pin budget permits;
 - protection and proper RS-232 transceivers on external RS-232 connectors;
 - no RS-232 voltage presented directly to B1 or ECP5 I/O.
+
+
+## PS/2 keyboard and mouse contract
+
+Rev-A shall treat **PS/2 keyboard and mouse as first-class retro input**, with both Linux/K1 and FPGA/ECP5 able to use PS/2 devices.
+
+Preferred physical implementation is **two standard mini-DIN-6 connectors**:
+- PS/2 keyboard;
+- PS/2 mouse.
+
+The electrical/routing design shall permit controlled ownership/routing to either domain rather than duplicating four connectors. The FPGA must be able to own PS/2 clock/data directly for cycle-accurate or machine-specific input handling. Linux must also be able to access PS/2 input through an appropriate controller/bridge path.
+
+An internal mux/switch/cross-connect is preferred so software can select Linux or FPGA ownership, with a defined safe default and no simultaneous bus driving.
+
+USB remains the fallback/general-purpose input path on the Linux host. Linux may forward USB keyboard/mouse/gamepad events to FPGA cores through the host bridge, but native PS/2 ownership must not depend on Linux.
+
+Electrical requirements:
+- open-collector/open-drain PS/2 signalling respected;
+- appropriate pull-ups and voltage-domain translation;
+- ESD protection at external connectors;
+- no 5 V PS/2 signal directly into K1 or ECP5;
+- hot-plug behavior and connector power protection considered during schematic qualification.
