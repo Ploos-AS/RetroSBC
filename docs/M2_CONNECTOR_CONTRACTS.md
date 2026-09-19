@@ -55,3 +55,8 @@ Production test pads may duplicate these signals for a bed-of-nails fixture.
 ## Rev-A DB9 retro controller ports
 
 Rev-A shall provide **2 x DE-9 (DB9) controller ports** as first-class FPGA-facing interfaces. Baseline mode is Atari/Amiga/C64-compatible digital joystick signalling (directions + fire), through protected level translation rather than raw FPGA I/O. Core-specific mouse, paddle, extra-button or bidirectional modes require explicit electrical mapping and qualification. See `M3_3_CORE_COMPATIBILITY.md`.
+
+
+## Rev-A serial ports
+
+Rev-A shall expose independent external serial interfaces for **Linux/K1** and **FPGA/ECP5**. Both user-facing paths shall support real RS-232 through appropriate transceivers; neither may expose RS-232 levels directly to logic I/O. Linux shall additionally retain a 3.3 V TTL debug UART/header. FPGA serial must be directly core-ownable; an optional internal Linux↔FPGA bridge/cross-connect is supplementary, not a replacement for the two independent serial paths.
