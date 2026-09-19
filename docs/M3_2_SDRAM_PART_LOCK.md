@@ -1,10 +1,10 @@
 # M3.2 — SDR SDRAM production part lock
 
-Status: **CANDIDATE LOCK — electrical/PCB qualification pending**
+Status: **EXACT REV-A PART LOCK — electrical/PCB qualification pending**
 
 ## Primary Rev-A SDRAM
 
-RetroSBC selects the **ISSI IS42S16320F family** as the Rev-A dedicated FPGA SDR SDRAM baseline.
+RetroSBC selects **ISSI IS42S16320B-6TLI** as the primary Rev-A dedicated FPGA SDR SDRAM.
 
 Required characteristics:
 
@@ -18,7 +18,15 @@ Required characteristics:
 - JEDEC SDR SDRAM command interface;
 - 54-pin TSOP-II preferred for maker-friendly Rev-A assembly and inspection.
 
-The exact purchasable ordering suffix (speed/temperature/package) remains a procurement gate. Do not substitute the 2.5 V IS42R family.
+Exact ordering code: **IS42S16320B-6TLI**.
+
+- speed grade: -6 (166 MHz CL3; 100 MHz CL2 supported);
+- temperature: Industrial, -40 °C to +85 °C;
+- package: 54-pin TSOP-II;
+- supply: 3.3 V;
+- organization: 32M x16 / four banks.
+
+The controller qualification point remains 100 MHz / CL2, intentionally below the device's CL3 maximum. Do not substitute the 2.5 V IS42R family.
 
 ## Controller geometry contract
 
@@ -38,7 +46,7 @@ Use a conservative **100 MHz maximum controller qualification point with CL=2** 
 
 ## Qualification still required
 
-1. freeze exact orderable suffix and second-source/procurement evidence;
+1. confirm distributor stock/procurement and define an approved alternate if required;
 2. correct controller READ/WRITE A10 policy (explicit precharge vs auto-precharge, never both);
 3. derive tRP/tRCD/tRFC/tMRD/tWR and refresh interval from the exact datasheet;
 4. add a behavioral SDRAM model or stronger protocol assertions;
