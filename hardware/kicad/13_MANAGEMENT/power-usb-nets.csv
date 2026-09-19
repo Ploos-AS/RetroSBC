@@ -1,0 +1,10 @@
+signal,domain,direction,voltage,status,notes
+MGMT_3V3,management,power,3.3V,DEFINED,Management local rail
+MGMT_USB_DP,USB,bidirectional,USB2,DEFINED,RP2354B dedicated USB D+
+MGMT_USB_DM,USB,bidirectional,USB2,DEFINED,RP2354B dedicated USB D-
+SERVICE_VBUS,USB,power/sense,5V nominal,DEFINED,Must not back-power board
+USB_CC1,USB,input/passive,CC,DEFINED,5.1k Rd to GND
+USB_CC2,USB,input/passive,CC,DEFINED,5.1k Rd to GND
+MGMT_RUN,management,input/reset,3.3V domain,DEFINED,Safe passive default
+SWDIO,debug,bidirectional,3.3V,DEFINED,Factory/service debug
+SWCLK,debug,input,3.3V,DEFINED,Factory/service debug
