@@ -12,8 +12,8 @@ always @(posedge clk) if(!csn) begin
  if(!rasn && casn && !wen) pre_count=pre_count+1;
  if(!rasn && !casn && wen) refresh_count=refresh_count+1;
  if(!rasn && !casn && !wen) mrs_count=mrs_count+1;
- if(rasn && !casn && wen) read_count=read_count+1;
- if(rasn && !casn && !wen) write_count=write_count+1;
+ if(rasn && !casn && wen) begin read_count=read_count+1; if(a[10]!==1'b0) $fatal(1,"READ unexpectedly enables auto-precharge"); end
+ if(rasn && !casn && !wen) begin write_count=write_count+1; if(a[10]!==1'b0) $fatal(1,"WRITE unexpectedly enables auto-precharge"); end
 end
 task wait_ready; integer n; begin n=0; while(!ready && n<100) begin @(posedge clk); #1; n=n+1; end if(!ready) $fatal(1,"timeout waiting for ready state=%0d refresh=%0d req=%0b",dut.state,dut.refresh,req); end endtask
 initial begin
