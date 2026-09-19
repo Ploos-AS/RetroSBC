@@ -60,7 +60,7 @@ For a USB-C receptacle:
 - tie duplicated D- contacts into `MGMT_USB_DM`;
 - route D+/D- as a short matched USB2 differential pair;
 - place low-capacitance ESD protection adjacent to the connector;
-- reserve small series-resistor footprints only if the vendor/reference design or SI bring-up warrants them.
+- fit 27 Ω series termination on both USB D+ and D- as required by the RP2350 hardware design guidance;\n- place both 27 Ω resistors close to the RP2354B USB pins.
 
 Do not add arbitrary capacitance to D+/D-.
 
@@ -103,7 +103,7 @@ This sub-block is electrically reviewable when:
 4. CC1/CC2 each have independent 5.1 kΩ Rd;
 5. USB ESD is present;
 6. VBUS cannot back-power main rails;
-7. D+/D- have no accidental stubs or inappropriate translator;
+7. D+/D- each have the required 27 Ω series termination close to the MCU, with no accidental stubs or inappropriate translator;
 8. SWD/RUN recovery remains usable;
 9. ERC passes or local exceptions are documented.
 
