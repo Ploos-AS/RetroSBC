@@ -108,3 +108,27 @@ Electrical requirements:
 - ESD protection at external connectors;
 - no 5 V PS/2 signal directly into K1 or ECP5;
 - hot-plug behavior and connector power protection considered during schematic qualification.
+
+
+## Audio, MIDI and video contract
+
+### Audio
+Rev-A shall provide **stereo analog line output on 2 x RCA/phono connectors (left/right)**, deliberately matching the familiar retro-computer/hi-fi connection style. The FPGA domain must have a direct digital-audio path to the board audio DAC/codec so a machine core can generate audio without Linux mixing being mandatory. Linux audio shall also be routable to the same output stage, with controlled selection/mixing defined by the implementation.
+
+A 3.5 mm stereo line/headphone output is desirable as a convenience output if board space and BOM permit, but does not replace the RCA pair.
+
+### MIDI
+Rev-A shall provide standards-appropriate **5-pin DIN MIDI IN and MIDI OUT**. MIDI must be usable from both Linux and FPGA domains through controlled routing. FPGA direct ownership is required for timing-sensitive retro/music cores; Linux access is also required for modern applications and tooling.
+
+### Video
+**HDMI is mandatory** as the primary convenience display output.
+
+The board shall distinguish:
+- Linux/K1 native HDMI;
+- FPGA-generated video.
+
+FPGA video must have a defined route to a physical display output rather than requiring software screen capture on Linux. The implementation may use a dedicated FPGA HDMI/DVI-compatible transmitter/output or a qualified bridge/mux architecture.
+
+For retro compatibility, Rev-A shall also reserve/support an **analog RGB video option** suitable for retro monitors/upscalers. The preferred connector/electrical standard shall be selected during schematic capture; candidates include VGA-style DE-15 RGBHV and a dedicated RGB/SCART-compatible expansion/header path. Composite/S-Video are optional rather than baseline requirements.
+
+The video architecture should preserve native/core timing where practical and must document when HDMI output requires scaling or clock-domain conversion.
