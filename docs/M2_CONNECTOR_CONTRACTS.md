@@ -60,3 +60,8 @@ Rev-A shall provide **2 x DE-9 (DB9) controller ports** as first-class FPGA-faci
 ## Rev-A serial ports
 
 Rev-A shall expose independent external serial interfaces for **Linux/K1** and **FPGA/ECP5**. Both user-facing paths shall support real RS-232 through appropriate transceivers; neither may expose RS-232 levels directly to logic I/O. Linux shall additionally retain a 3.3 V TTL debug UART/header. FPGA serial must be directly core-ownable; an optional internal Linux↔FPGA bridge/cross-connect is supplementary, not a replacement for the two independent serial paths.
+
+
+## Rev-A PS/2 input
+
+Rev-A shall provide **2 x mini-DIN-6 PS/2 connectors**, one keyboard and one mouse. Both Linux/K1 and FPGA/ECP5 domains shall be able to consume PS/2 input through controlled mux/bridge ownership; FPGA must support direct PS/2 clock/data ownership without Linux forwarding. USB keyboard/mouse/gamepad on the Linux host remains a fallback and may also be forwarded to FPGA cores. PS/2 electrical implementation must preserve open-collector behavior, provide protected 5 V peripheral power and level translation, and prevent simultaneous bus driving.
