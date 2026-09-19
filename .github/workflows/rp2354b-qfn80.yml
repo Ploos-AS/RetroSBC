@@ -5,16 +5,20 @@ on:
     paths:
       - "hardware/kicad/13_MANAGEMENT/rp2354b-qfn80.csv"
       - "hardware/kicad/13_MANAGEMENT/rp2354b-binding.csv"
+      - "hardware/kicad/13_MANAGEMENT/RetroSBC-management.kicad_sym"
       - "tools/check_rp2354b_qfn80.py"
       - "tools/check_rp2354b_semantics.py"
+      - "tools/generate_rp2354b_kicad_symbol.py"
       - ".github/workflows/rp2354b-qfn80.yml"
   push:
     branches: [main]
     paths:
       - "hardware/kicad/13_MANAGEMENT/rp2354b-qfn80.csv"
       - "hardware/kicad/13_MANAGEMENT/rp2354b-binding.csv"
+      - "hardware/kicad/13_MANAGEMENT/RetroSBC-management.kicad_sym"
       - "tools/check_rp2354b_qfn80.py"
       - "tools/check_rp2354b_semantics.py"
+      - "tools/generate_rp2354b_kicad_symbol.py"
 
 jobs:
   validate:
@@ -23,5 +27,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Structural QFN-80 validation
         run: python3 tools/check_rp2354b_qfn80.py hardware/kicad/13_MANAGEMENT/rp2354b-qfn80.csv
-      - name: Generate KiCad symbol reproducibility check\n        run: |\n          python3 tools/generate_rp2354b_kicad_symbol.py hardware/kicad/13_MANAGEMENT/rp2354b-qfn80.csv /tmp/RP2354B.kicad_sym\n          diff -u hardware/kicad/13_MANAGEMENT/RetroSBC-management.kicad_sym /tmp/RP2354B.kicad_sym\n      - name: Semantic binding validation
+      - name: Generate KiCad symbol reproducibility check
+        run: |
+          python3 tools/generate_rp2354b_kicad_symbol.py hardware/kicad/13_MANAGEMENT/rp2354b-qfn80.csv /tmp/RP2354B.kicad_sym
+          diff -u hardware/kicad/13_MANAGEMENT/RetroSBC-management.kicad_sym /tmp/RP2354B.kicad_sym
+      - name: Semantic binding validation
         run: python3 tools/check_rp2354b_semantics.py hardware/kicad/13_MANAGEMENT/rp2354b-qfn80.csv hardware/kicad/13_MANAGEMENT/rp2354b-binding.csv
