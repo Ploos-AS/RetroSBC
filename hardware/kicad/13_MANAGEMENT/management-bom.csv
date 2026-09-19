@@ -1,0 +1,23 @@
+ref,function,preferred_part_or_class,package,status,notes
+U_MGMT,management MCU,RP2354B,QFN-80,LOCKED_CANDIDATE,A4-or-later production qualification required
+J_SERVICE,service USB,USB-C USB2 receptacle,TH/SMT hybrid,TBD,Maker/service friendly connector; no high-speed USB3 requirement
+D_USB_ESD,USB ESD,low-capacitance USB2 ESD array,SOT/DFN,TBD,Place adjacent to connector
+R_CC1,USB-C CC1,Rd 5.1k 1%,0603,CLASS_LOCK,Device/UFP advertisement
+R_CC2,USB-C CC2,Rd 5.1k 1%,0603,CLASS_LOCK,Device/UFP advertisement
+F_VBUS,service VBUS protection,resettable fuse/load switch,TBD,TBD,Only if service-only powering is enabled
+Q_VBUS_ISO,VBUS isolation,reverse-current blocking/load switch,TBD,TBD,Prevent main-rail back-power
+C_MGMT_BULK,MGMT 3V3 bulk,10uF X7R,0805,CLASS_LOCK,Final voltage rating after rail review
+C_MGMT_DECOUPLING,MCU local decoupling,100nF X7R,0402/0603,CLASS_LOCK,One-per-required-supply vicinity per vendor guide
+J_SWD,SWD service,Tag-Connect/test-pad pattern,PCB footprint,CLASS_LOCK,Document 2.54mm adapter
+LED_STATUS,status LED,standard visible LED,0603/0805,TBD,Prefer repairable common package
+LED_ERROR,error/recovery LED,standard visible LED,0603/0805,TBD,May become bicolour if justified
+SW_SERVICE,service/recovery button,momentary NO tactile,TH/SMT,TBD,Accessible at board edge
+Q_FAN,fan PWM driver,logic-level transistor/MOSFET,SOT-23,TBD,Depends on selected fan topology
+J_FAN,fan connector,3/4-pin fan header,2.54mm,TBD,Prefer common PC-style pinout if practical
+R_ADC_IN,input rail divider,resistor pair,0603,TBD,Values after ADC/full-scale review
+R_ADC_5V,5V divider,resistor pair,0603,TBD,Values after ADC/full-scale review
+R_ADC_3V3,3V3 divider,resistor pair,0603,TBD,Values after ADC/full-scale review
+TP_MGMT_3V3,3V3 test point,test loop/pad,THT/pad,CLASS_LOCK,Label on silkscreen
+TP_RESET,MCU reset test point,test pad,pad,CLASS_LOCK,
+TP_K1_RESET,K1 reset test point,test pad,pad,CLASS_LOCK,
+TP_FPGA_RESET,FPGA reset test point,test pad,pad,CLASS_LOCK,
