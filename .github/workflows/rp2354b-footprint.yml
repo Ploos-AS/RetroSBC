@@ -1,0 +1,29 @@
+name: RP2354B QFN-80 footprint validation
+
+on:
+  pull_request:
+    paths:
+      - "hardware/kicad/13_MANAGEMENT/RP2354B_QFN80.kicad_mod"
+      - "hardware/kicad/13_MANAGEMENT/rp2354b-footprint-dimensions.csv"
+      - "tools/generate_rp2354b_kicad_footprint.py"
+      - "tools/check_rp2354b_footprint.py"
+      - ".github/workflows/rp2354b-footprint.yml"
+  push:
+    branches: [main]
+    paths:
+      - "hardware/kicad/13_MANAGEMENT/RP2354B_QFN80.kicad_mod"
+      - "hardware/kicad/13_MANAGEMENT/rp2354b-footprint-dimensions.csv"
+      - "tools/generate_rp2354b_kicad_footprint.py"
+      - "tools/check_rp2354b_footprint.py"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Structural footprint validation
+        run: python3 tools/check_rp2354b_footprint.py hardware/kicad/13_MANAGEMENT/RP2354B_QFN80.kicad_mod
+      - name: Deterministic footprint generation
+        run: |
+          python3 tools/generate_rp2354b_kicad_footprint.py /tmp/RP2354B_QFN80.kicad_mod
+          diff -u hardware/kicad/13_MANAGEMENT/RP2354B_QFN80.kicad_mod /tmp/RP2354B_QFN80.kicad_mod
