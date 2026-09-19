@@ -39,7 +39,7 @@ RetroSBC additionally retains a 10 uF-class local bulk capacitor on `MGMT_3V3`.
 The power block may only move to CAPTURE PASS after:
 
 1. every supply pad in the validated QFN-80 table is connected;
-2. package ground/exposed-pad requirements are independently verified and captured;
+2. the QFN-80 exposed ground pad is captured as the package's single external GND connection and tied to the uninterrupted ground plane/reference;
 3. VREG_VIN/LX/FB/PGND/AVDD match the current vendor reference;
 4. DVDD is connected to the filtered 1.1 V rail;
 5. all required local decoupling is present;
@@ -48,3 +48,9 @@ The power block may only move to CAPTURE PASS after:
 8. the completed block is compared side-by-side with the current official RP2350B Minimal design.
 
 This document does not itself mark electrical capture PASS.
+
+## QFN-80 ground-pad clarification
+
+The official RP2350B QFN-80 pinout shows the centre exposed pad as `GND`. The datasheet describes this as the package's single external ground connection, bonded to multiple internal die ground pads. It is not part of numbered pads 1..80, so the RetroSBC symbol/package model must represent it explicitly rather than silently omitting it.
+
+**Qualification consequence:** the existing 80-numbered-pin transcription can remain the source for pads 1..80, but the KiCad symbol/footprint contract is not package-complete until the exposed GND pad is represented and checked against the selected QFN-80 footprint.
