@@ -1,0 +1,4 @@
+source,authority,scope,revision_or_date,status
+RP2350 datasheet,Raspberry Pi,Silicon/QFN-80 pinout and electrical requirements,2025-10-06 portal listing,LOCKED_SOURCE
+Hardware design with RP2350,Raspberry Pi,Power/reference circuit/layout/component guidance,2026-08-24 portal update,LOCKED_SOURCE
+RP2350B Minimal KiCad,Raspberry Pi,QFN-80 minimal reference schematic/BOM/layout,2026-07-27 portal update,LOCKED_SOURCE
