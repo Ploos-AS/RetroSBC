@@ -1,0 +1,18 @@
+signal,domain,package_ball,bank,vccio,io_standard,direction,capability,destination,translator,notes,source
+# Exact package_ball/bank values remain UNBOUND until imported from official Lattice ECP5UM-85 pinout CSV
+SDRAM_DQ0,FPGA,UNBOUND,UNBOUND,3.3V,LVCMOS33,BIDIR,SDRAM_DATA,SDRAM,none,x16 SDR SDRAM bit 0,Lattice ECP5UM-85 Pinout
+SDRAM_CLK,FPGA,UNBOUND,UNBOUND,3.3V,LVCMOS33,OUT,CLOCK,SDRAM,none,clock-capable placement required,Lattice ECP5UM-85 Pinout
+HOST_SPI_SCLK,FPGA,UNBOUND,UNBOUND,3.3V,LVCMOS33,IN,HOST_CONTROL,B1/K1,level-if-required,host control SPI clock,Lattice ECP5UM-85 Pinout
+HOST_SPI_MOSI,FPGA,UNBOUND,UNBOUND,3.3V,LVCMOS33,IN,HOST_CONTROL,B1/K1,level-if-required,host to FPGA,Lattice ECP5UM-85 Pinout
+HOST_SPI_MISO,FPGA,UNBOUND,UNBOUND,3.3V,LVCMOS33,OUT,HOST_CONTROL,B1/K1,level-if-required,FPGA to host,Lattice ECP5UM-85 Pinout
+HOST_SPI_CS_N,FPGA,UNBOUND,UNBOUND,3.3V,LVCMOS33,IN,HOST_CONTROL,B1/K1,level-if-required,active low select,Lattice ECP5UM-85 Pinout
+JOY1_UP,FPGA,UNBOUND,UNBOUND,3.3V,LVCMOS33,IN,RETRO_IO,DB9-JOY1,protected-level,5V external interface isolated,Lattice ECP5UM-85 Pinout
+JOY2_UP,FPGA,UNBOUND,UNBOUND,3.3V,LVCMOS33,IN,RETRO_IO,DB9-JOY2,protected-level,5V external interface isolated,Lattice ECP5UM-85 Pinout
+PS2_KBD_CLK,FPGA,UNBOUND,UNBOUND,3.3V,LVCMOS33,BIDIR,OPEN_DRAIN,PS2-KBD,protected-mux,shared ownership,Lattice ECP5UM-85 Pinout
+PS2_KBD_DATA,FPGA,UNBOUND,UNBOUND,3.3V,LVCMOS33,BIDIR,OPEN_DRAIN,PS2-KBD,protected-mux,shared ownership,Lattice ECP5UM-85 Pinout
+FPGA_UART_TX,FPGA,UNBOUND,UNBOUND,3.3V,LVCMOS33,OUT,SERIAL,RS232-FPGA,MAX3232-class,real RS232 output,Lattice ECP5UM-85 Pinout
+FPGA_UART_RX,FPGA,UNBOUND,UNBOUND,3.3V,LVCMOS33,IN,SERIAL,RS232-FPGA,MAX3232-class,real RS232 input,Lattice ECP5UM-85 Pinout
+MIDI_TX,FPGA,UNBOUND,UNBOUND,3.3V,LVCMOS33,OUT,MIDI,MIDI-OUT,midi-driver,standards appropriate output,Lattice ECP5UM-85 Pinout
+MIDI_RX,FPGA,UNBOUND,UNBOUND,3.3V,LVCMOS33,IN,MIDI,MIDI-IN,opto-isolated,standards appropriate input,Lattice ECP5UM-85 Pinout
+AUDIO_BCLK,FPGA,UNBOUND,UNBOUND,3.3V,LVCMOS33,OUT,AUDIO,AUDIO-DAC,none,digital audio clock,Lattice ECP5UM-85 Pinout
+GPIO0,FPGA,UNBOUND,UNBOUND,3.3V,LVCMOS33,BIDIR,MAKER_GPIO,FPGA-GPIO,protected,assigned only after mandatory functions,Lattice ECP5UM-85 Pinout
