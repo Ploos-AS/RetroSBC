@@ -28,6 +28,8 @@ def main(src,dst):
  for i,r in enumerate(groups[1]): out.append(pin(r,-19.05+i*2.03,-30.48,90))
  for i,r in enumerate(groups[2]): out.append(pin(r,25.4,-24.13+i*2.54,180))
  for i,r in enumerate(groups[3]): out.append(pin(r,19.05-i*2.03,30.48,270))
+ # QFN-80 centre exposed pad: the package's single external GND connection.
+ out.append('      (pin power_in line (at 0 -30.48 90) (length 5.08) (name "GND" (effects (font (size 1.0 1.0)))) (number "EP" (effects (font (size 1.0 1.0)))))')
  out+=['    )','  )',')','']
  Path(dst).write_text("\n".join(out),encoding="utf-8")
 if __name__=="__main__":
