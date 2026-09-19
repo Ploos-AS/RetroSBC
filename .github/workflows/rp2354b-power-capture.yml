@@ -1,0 +1,21 @@
+name: RP2354B power capture validation
+on:
+  push:
+    paths:
+      - 'hardware/kicad/13_MANAGEMENT/rp2354b-power-netlist.csv'
+      - 'tools/check_rp2354b_power_capture.py'
+      - '.github/workflows/rp2354b-power-capture.yml'
+  pull_request:
+    paths:
+      - 'hardware/kicad/13_MANAGEMENT/rp2354b-power-netlist.csv'
+      - 'tools/check_rp2354b_power_capture.py'
+      - '.github/workflows/rp2354b-power-capture.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: python tools/check_rp2354b_power_capture.py
