@@ -20,7 +20,8 @@ A RetroSBC wrapper may provide:
 - audio;
 - USB keyboard/mouse/gamepad via host;
 - physical DB9 ports;
-- serial/MIDI;
+- independent Linux-host and FPGA serial ports;
+- MIDI;
 - storage/image services;
 - RetroBus and selected GPIO;
 - optional FPGA/host high-speed transport.
@@ -61,3 +62,26 @@ Third-party RTL remains under its upstream license. GPL cores such as Minimig ar
 - one simple 8-bit core as the portability/reference test
 
 Each target receives a manifest describing upstream revision, license, resource use, clocks, memory, video/audio, input mapping and unsupported features.
+
+
+## Serial-port contract
+
+Rev-A requires **independent physical serial connectivity for both the Linux host and the FPGA**. Serial is a first-class RetroSBC function, not merely a debug header.
+
+### Linux serial
+The K1/B1 Linux side shall expose at least one dedicated UART through a real external serial interface. The preferred user-facing implementation is a standards-compliant RS-232 port using a MAX3232-class transceiver, while a separate 3.3 V TTL debug UART/header may be retained for bring-up and recovery.
+
+### FPGA serial
+The ECP5 shall expose an independent UART/serial path that FPGA cores can own directly without Linux bit-banging or forwarding being required. It shall support a real external RS-232 interface through appropriate level translation. This enables FPGA machines and BBS/terminal cores to behave like physical retro computers with their own serial hardware.
+
+### Routing and bridging
+Linux and FPGA serial interfaces remain independently usable. A controlled internal bridge/cross-connect may additionally allow Linux to communicate with, monitor, or service the FPGA UART, but this is supplementary and must not remove direct FPGA ownership.
+
+Required design goals:
+- Linux external RS-232;
+- FPGA external RS-232;
+- 3.3 V TTL debug UART for Linux bring-up;
+- FPGA debug/auxiliary UART where practical;
+- hardware flow-control signals where connector/pin budget permits;
+- protection and proper RS-232 transceivers on external RS-232 connectors;
+- no RS-232 voltage presented directly to B1 or ECP5 I/O.
