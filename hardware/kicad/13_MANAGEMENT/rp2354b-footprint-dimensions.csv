@@ -1,0 +1,16 @@
+parameter,value,unit,source,figure,status,notes
+body_x,10.0,mm,RP2350 Datasheet,Figure 145,VERIFIED,Package body
+body_y,10.0,mm,RP2350 Datasheet,Figure 145,VERIFIED,Package body
+pitch,0.4,mm,RP2350 Datasheet,Figure 146,VERIFIED,PCB land pitch
+outer_land_span_x,10.573,mm,RP2350 Datasheet,Figure 146,VERIFIED,Recommended PCB footprint overall land span
+outer_land_span_y,10.573,mm,RP2350 Datasheet,Figure 146,VERIFIED,Recommended PCB footprint overall land span
+inner_land_span_x,9.013,mm,RP2350 Datasheet,Figure 146,VERIFIED,Recommended PCB footprint inner span
+inner_land_span_y,9.013,mm,RP2350 Datasheet,Figure 146,VERIFIED,Recommended PCB footprint inner span
+exposed_pad_x,3.40,mm,RP2350 Datasheet,Figure 146,VERIFIED,Recommended PCB footprint exposed pad
+exposed_pad_y,3.40,mm,RP2350 Datasheet,Figure 146,VERIFIED,Recommended PCB footprint exposed pad
+terminal_land_width,0.22,mm,RP2350 Datasheet,Figure 146,VERIFIED,Recommended PCB land width
+terminal_land_length,0.78,mm,RP2350 Datasheet,Figure 146,VERIFIED,Recommended PCB land length
+terminal_gap,0.18,mm,RP2350 Datasheet,Figure 146,VERIFIED,Recommended PCB land gap
+edge_clearance,1.377,mm,RP2350 Datasheet,Figure 146,VERIFIED,Recommended PCB footprint dimension
+perimeter_count,80,,RP2350 Datasheet,Figure 146,VERIFIED,20 per side
+exposed_pad_net,GND,,RP2350 Datasheet,Figure 145,VERIFIED,Single external ground connection
