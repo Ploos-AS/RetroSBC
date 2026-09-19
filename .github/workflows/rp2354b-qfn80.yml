@@ -1,0 +1,27 @@
+name: RP2354B QFN-80 validation
+
+on:
+  pull_request:
+    paths:
+      - "hardware/kicad/13_MANAGEMENT/rp2354b-qfn80.csv"
+      - "hardware/kicad/13_MANAGEMENT/rp2354b-binding.csv"
+      - "tools/check_rp2354b_qfn80.py"
+      - "tools/check_rp2354b_semantics.py"
+      - ".github/workflows/rp2354b-qfn80.yml"
+  push:
+    branches: [main]
+    paths:
+      - "hardware/kicad/13_MANAGEMENT/rp2354b-qfn80.csv"
+      - "hardware/kicad/13_MANAGEMENT/rp2354b-binding.csv"
+      - "tools/check_rp2354b_qfn80.py"
+      - "tools/check_rp2354b_semantics.py"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Structural QFN-80 validation
+        run: python3 tools/check_rp2354b_qfn80.py hardware/kicad/13_MANAGEMENT/rp2354b-qfn80.csv
+      - name: Semantic binding validation
+        run: python3 tools/check_rp2354b_semantics.py hardware/kicad/13_MANAGEMENT/rp2354b-qfn80.csv hardware/kicad/13_MANAGEMENT/rp2354b-binding.csv
