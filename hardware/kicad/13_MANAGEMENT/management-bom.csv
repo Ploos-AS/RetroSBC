@@ -2,7 +2,7 @@ ref,function,preferred_part_or_class,package,status,notes
 U_MGMT,management MCU,RP2354B,QFN-80,LOCKED_CANDIDATE,A4-or-later production qualification required
 J_SERVICE,service USB,USB-C USB2 receptacle,TH/SMT hybrid,TBD,Maker/service friendly connector; no high-speed USB3 requirement
 D_USB_ESD,USB ESD,low-capacitance USB2 ESD array,SOT/DFN,TBD,Place adjacent to connector
-R_CC1,USB-C CC1,Rd 5.1k 1%,0603,CLASS_LOCK,Device/UFP advertisement
+R_USB_DM,USB D- series termination,27 ohm,0402/0603,CLASS_LOCK,Place close to RP2354B per vendor guide\nR_USB_DP,USB D+ series termination,27 ohm,0402/0603,CLASS_LOCK,Place close to RP2354B per vendor guide\nR_CC1,USB-C CC1,Rd 5.1k 1%,0603,CLASS_LOCK,Device/UFP advertisement
 R_CC2,USB-C CC2,Rd 5.1k 1%,0603,CLASS_LOCK,Device/UFP advertisement
 F_VBUS,service VBUS protection,resettable fuse/load switch,TBD,TBD,Only if service-only powering is enabled
 Q_VBUS_ISO,VBUS isolation,reverse-current blocking/load switch,TBD,TBD,Prevent main-rail back-power
