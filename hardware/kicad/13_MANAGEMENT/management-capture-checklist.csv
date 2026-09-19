@@ -1,0 +1,23 @@
+item,block,required,status,verification
+RP2354B_QFN80,U_MGMT,yes,PENDING,Official RP2350B Minimal KiCad + datasheet
+ALL_SUPPLY_PINS,U_MGMT,yes,PENDING,Datasheet/package table
+ALL_GROUND_PINS,U_MGMT,yes,PENDING,Datasheet/package table
+EXPOSED_PAD,U_MGMT,yes,PENDING,Package/design guide
+SMPS_SUPPORT,U_MGMT,yes,PENDING,Hardware design with RP2350
+LOCAL_DECOUPLING,U_MGMT,yes,PENDING,Official Minimal B reference
+MGMT_3V3_BULK,U_MGMT,yes,PENDING,Official Minimal B/reference review
+STACKED_FLASH_POLICY,U_MGMT,yes,LOCKED,RP2354B integrated 2 MiB default
+EXTERNAL_FLASH,U_MGMT,no,DNI_BASELINE,Only intentional secondary flash
+USB_DM_PAD73,USB,yes,BOUND,Official QFN-80 pinout
+USB_DP_PAD74,USB,yes,BOUND,Official QFN-80 pinout
+CC1_RD_5K1,USB,yes,DEFINED,USB-C UFP contract
+CC2_RD_5K1,USB,yes,DEFINED,USB-C UFP contract
+USB_ESD,USB,yes,PENDING,Select qualified low-capacitance array
+VBUS_SENSE,USB,yes,PENDING,No-back-power review
+VBUS_SERVICE_POWER,USB,no,DNI_BASELINE,Optional isolated service-only power
+RUN_RESET,DEBUG,yes,PENDING,Official reference design
+SWDIO,DEBUG,yes,PENDING,Official package/reference
+SWCLK,DEBUG,yes,PENDING,Official package/reference
+SWD_RECOVERY_ACCESS,DEBUG,yes,PENDING,Tag-connect/test-pad capture
+ERC,QUALIFICATION,yes,PENDING,KiCad ERC
+REFERENCE_SIDE_BY_SIDE,QUALIFICATION,yes,PENDING,Compare official Minimal B
