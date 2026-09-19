@@ -21,3 +21,8 @@
 ## Selection rule
 
 Production MPNs require lifecycle/availability review and should have a realistic substitute or documented single-source rationale. Maker-friendly sourcing and hand-repair considerations remain part of selection, but high-speed/BGA components are accepted where the architecture requires them.
+
+
+## M3.2 FPGA SDRAM update
+
+Dedicated FPGA SDRAM candidate family is now **ISSI IS42S16320F**, 512 Mbit (32M x16), 3.3 V SDR SDRAM. Preferred Rev-A package is 54-pin TSOP-II for maker-friendly inspection/rework. Exact speed/temperature ordering suffix remains a procurement and electrical qualification gate. See `M3_2_SDRAM_PART_LOCK.md`.
