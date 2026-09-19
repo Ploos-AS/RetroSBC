@@ -65,3 +65,10 @@ Rev-A shall expose independent external serial interfaces for **Linux/K1** and *
 ## Rev-A PS/2 input
 
 Rev-A shall provide **2 x mini-DIN-6 PS/2 connectors**, one keyboard and one mouse. Both Linux/K1 and FPGA/ECP5 domains shall be able to consume PS/2 input through controlled mux/bridge ownership; FPGA must support direct PS/2 clock/data ownership without Linux forwarding. USB keyboard/mouse/gamepad on the Linux host remains a fallback and may also be forwarded to FPGA cores. PS/2 electrical implementation must preserve open-collector behavior, provide protected 5 V peripheral power and level translation, and prevent simultaneous bus driving.
+
+
+## Rev-A audio, MIDI and video
+
+- **Audio:** 2 x RCA/phono stereo line output (L/R) is mandatory. FPGA direct audio generation and Linux audio routing shall both be supported. A 3.5 mm stereo convenience output is preferred if practical.
+- **MIDI:** 5-pin DIN MIDI IN + MIDI OUT, routable to both Linux and FPGA, with direct FPGA ownership supported.
+- **Video:** HDMI is mandatory. Linux/K1 native HDMI and FPGA-generated video must each have a defined display path. Rev-A shall also provide or reserve an analog RGB path for retro monitors/upscalers; exact connector (e.g. DE-15 RGBHV vs dedicated RGB expansion) is an M3.3 schematic decision. Composite/S-Video remain optional.
