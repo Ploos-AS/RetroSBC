@@ -1,0 +1,20 @@
+; RetroSBC M3.7 generated management-power capture fragment
+; GENERATED from rp2354b-power-netlist.csv — do not hand edit
+(management_power_capture
+  (connection (ref "U_MGMT") (value_or_function "RP2354B") (from "pads 5;15;24;29;41;50;60;68;69;76") (to "MGMT_3V3") (status "LOCKED"))
+  (connection (ref "U_MGMT") (value_or_function "RP2354B") (from "pad 59 ADC_AVDD") (to "MGMT_3V3") (status "LOCKED"))
+  (connection (ref "U_MGMT") (value_or_function "RP2354B") (from "pad 61 VREG_AVDD") (to "MGMT_3V3") (status "LOCKED"))
+  (connection (ref "U_MGMT") (value_or_function "RP2354B") (from "pad 63 VREG_VIN") (to "MGMT_3V3") (status "LOCKED"))
+  (connection (ref "U_MGMT") (value_or_function "RP2354B") (from "pads 10;32;51 DVDD") (to "MGMT_1V1") (status "LOCKED"))
+  (connection (ref "U_MGMT") (value_or_function "RP2354B") (from "pad 62 VREG_PGND") (to "GND") (status "LOCKED"))
+  (connection (ref "U_MGMT") (value_or_function "RP2354B") (from "EP") (to "GND") (status "LOCKED"))
+  (connection (ref "L_MGMT_CORE") (value_or_function "3.3uH") (from "pad 64 VREG_LX") (to "MGMT_1V1") (status "REFERENCE_LOCK"))
+  (connection (ref "U_MGMT") (value_or_function "RP2354B") (from "pad 65 VREG_FB") (to "MGMT_1V1") (status "REFERENCE_LOCK"))
+  (connection (ref "C_MGMT_VREG_IN") (value_or_function "4.7uF") (from "MGMT_3V3") (to "GND") (status "REFERENCE_LOCK"))
+  (connection (ref "C_MGMT_VREG_OUT") (value_or_function "4.7uF") (from "MGMT_1V1") (to "GND") (status "REFERENCE_LOCK"))
+  (connection (ref "R_MGMT_VREG_AVDD") (value_or_function "33R") (from "MGMT_3V3") (to "VREG_AVDD") (status "REFERENCE_LOCK"))
+  (connection (ref "C_MGMT_VREG_AVDD") (value_or_function "4.7uF") (from "VREG_AVDD") (to "GND") (status "REFERENCE_LOCK"))
+  (connection (ref "C_MGMT_BULK") (value_or_function "10uF class") (from "MGMT_3V3") (to "GND") (status "CLASS_LOCK"))
+  (connection (ref "C_MGMT_IOVDD") (value_or_function "100nF class") (from "MGMT_3V3") (to "GND") (status "CLASS_LOCK"))
+  (connection (ref "C_MGMT_DVDD") (value_or_function "100nF per power pin normally; reference layout includes 4.7uF core decoupling") (from "MGMT_1V1") (to "GND") (status "REFERENCE_LOCK"))
+)
