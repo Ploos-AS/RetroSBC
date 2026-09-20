@@ -1,6 +1,14 @@
 # RetroSBC Roadmap
 
-## M0 — Foundation
+## Current status
+
+**Active engineering milestone: M3.7 — Rev A schematic capture / management subsystem qualification.**
+
+The original milestone sequence below remains the project-level roadmap. Development has crossed the M2/M3 boundary iteratively: architecture and interface contracts are being converted into real KiCad Rev A artifacts before PCB placement/routing begins. A milestone is not considered physically qualified merely because its contracts, generators or CI checks exist.
+
+Current M3.7 gate: materialize the machine-checked RP2354B management power network as actual KiCad symbols/wiring, then obtain schematic/netlist/visual review and ERC qualification. Full-board PCB Rev A routing has not started.
+
+## M0 — Foundation — PASS
 
 - Define project identity and use cases.
 - Define RISC-V + FPGA architecture.
@@ -24,19 +32,35 @@
 - Decide storage, Ethernet and USB topology.
 - Produce preliminary BOM and risk register.
 
-## M2 — Schematic architecture — IN PROGRESS
+## M2 — Schematic architecture — ADVANCED / feeding M3 capture
 
-- Capture hierarchical KiCad schematic.
-- Compute-module interface.
-- FPGA, configuration and clocks.
-- Power tree and sequencing.
-- Ethernet, USB, HDMI and storage.
-- DB9, RS-232, MIDI and RetroBus.
+- Hierarchical KiCad structure and subsystem contracts established.
+- Compute-module interface work.
+- FPGA device/package, configuration, clocks and bank/resource planning.
+- Power-tree and sequencing contracts.
+- Ethernet, USB, HDMI and storage architecture.
+- DB9, RS-232, MIDI and RetroBus contracts.
 - Debug/test interfaces.
-- Electrical review and ERC.
+- Electrical review gates and ERC requirements.
 
-## M3 — PCB Rev A
+Remaining M2-class work is completed alongside concrete Rev A capture rather than as a separate paper-design phase.
 
+## M3 — PCB Rev A — IN PROGRESS (M3.7 schematic-capture gate)
+
+Current M3.7 work includes:
+
+- RP2354B QFN-80 authoritative pin transcription and semantic binding validation.
+- Deterministically generated project-local RP2354B KiCad symbol.
+- Explicit exposed GND-pad modelling.
+- Source-derived QFN-80 footprint dimensions, deterministic footprint generation and structural validation.
+- Management USB pad/termination correction against authoritative source data.
+- Management power-network contract and machine-checked capture netlist.
+- CI gates for package bindings, generated artifacts and power connectivity.
+- **Next gate:** materialize management power as real KiCad objects/wiring and obtain ERC/netlist/visual-review PASS.
+
+PCB Rev A work still to follow:
+
+- Complete full-board schematic capture and ERC.
 - Board stack-up and constraints.
 - Placement and thermal review.
 - High-speed routing.
