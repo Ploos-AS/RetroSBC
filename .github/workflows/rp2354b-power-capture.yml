@@ -1,15 +1,23 @@
 name: RP2354B power capture validation
+
 on:
   push:
     paths:
       - 'hardware/kicad/13_MANAGEMENT/rp2354b-power-netlist.csv'
+      - 'hardware/kicad/13_MANAGEMENT/generated-management-power.kicad_sexpr'
       - 'tools/check_rp2354b_power_capture.py'
+      - 'tools/generate_management_power_kicad.py'
+      - 'tools/check_management_power_kicad.py'
       - '.github/workflows/rp2354b-power-capture.yml'
   pull_request:
     paths:
       - 'hardware/kicad/13_MANAGEMENT/rp2354b-power-netlist.csv'
+      - 'hardware/kicad/13_MANAGEMENT/generated-management-power.kicad_sexpr'
       - 'tools/check_rp2354b_power_capture.py'
+      - 'tools/generate_management_power_kicad.py'
+      - 'tools/check_management_power_kicad.py'
       - '.github/workflows/rp2354b-power-capture.yml'
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -18,4 +26,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-      - run: python tools/check_rp2354b_power_capture.py
+      - name: Validate locked RP2354B power source
+        run: python tools/check_rp2354b_power_capture.py
+      - name: Regenerate management power capture
+        run: python tools/generate_management_power_kicad.py
+      - name: Require generated capture to be committed
+        run: git diff --exit-code -- hardware/kicad/13_MANAGEMENT/generated-management-power.kicad_sexpr
+      - name: Validate generated management power capture
+        run: python tools/check_management_power_kicad.py
+      - name: Require validator regeneration to stay clean
+        run: git diff --exit-code -- hardware/kicad/13_MANAGEMENT/generated-management-power.kicad_sexpr
