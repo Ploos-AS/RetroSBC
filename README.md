@@ -4,21 +4,24 @@
 
 RetroSBC is designed as a bridge between modern Linux development and classic computer hardware, with first-class support for FPGA experimentation, retro I/O, software qualification, hardware-in-the-loop testing, education, BBS/terminal use, and preservation workflows.
 
-> **Status:** M0 — project foundation and architecture definition.
+> **Status:** M3.7 — Rev A schematic capture and management subsystem qualification in progress.
+>
+> M0 and M1 are complete. M2 architecture/interface work has advanced into concrete Rev A KiCad capture. The current gate is materializing and qualifying the RP2354B management power network in KiCad; full-board ERC, PCB routing and physical Rev A qualification have not yet been claimed.
 
-## M0 architecture baseline
+## Current Rev A baseline
 
 - **Compute:** SpacemiT K1-class RISC-V via the B1 compute module
 - **Memory:** 8 GiB LPDDR4X baseline
 - **FPGA:** Lattice ECP5UM 45K-class baseline
+- **Management:** RP2354B QFN-80, with project-local generated symbol/footprint and machine-checked package bindings
 - **PCB:** carrier-board architecture, expected to require at least six layers
 - **Storage:** microSD and eMMC; PCIe/NVMe planned
 - **Networking:** Gigabit Ethernet; dual Ethernet preferred
 - **Modern I/O:** USB 3, USB 2 and HDMI
 - **Retro I/O:** two DB9 ports, real RS-232, MIDI and RetroBus
-- **Debug:** host UART/JTAG, FPGA JTAG, reset/boot controls and test points
+- **Debug:** host UART/JTAG, FPGA JTAG, management SWD, reset/boot controls and test points
 
-These are M0 baseline choices, not production-qualified commitments.
+These remain engineering baselines until their corresponding schematic, ERC, PCB and physical qualification gates pass.
 
 ## Architecture
 
@@ -43,6 +46,7 @@ See `docs/ARCHITECTURE.md`, `docs/HARDWARE.md`, `docs/RETROCORE.md`, `docs/RETRO
 - Open hardware and open software by default.
 - Maker-friendly, inspectable and repairable.
 - Hardware-in-the-loop qualification is a first-class requirement.
+- Electrical/package facts are source-gated and machine-checked where practical; unresolved values remain explicit rather than guessed.
 - No proprietary retro ROM or OS images are committed to the repository.
 
 ## Manufacturing
