@@ -26,5 +26,11 @@ jobs:
       - name: Parse management schematic by exporting PDF
         run: |
           mkdir -p /tmp/retrosbc-kicad
-          kicad-cli sch export pdf             --output /tmp/retrosbc-kicad/13_MANAGEMENT.pdf             hardware/kicad/13_MANAGEMENT/13_MANAGEMENT.kicad_sch
+          docker run --rm \
+            -v "$PWD:/work" -w /work \
+            -v /tmp/retrosbc-kicad:/out \
+            kicad/kicad:9.0.6 \
+            kicad-cli sch export pdf \
+              --output /out/13_MANAGEMENT.pdf \
+              hardware/kicad/13_MANAGEMENT/13_MANAGEMENT.kicad_sch
           test -s /tmp/retrosbc-kicad/13_MANAGEMENT.pdf
