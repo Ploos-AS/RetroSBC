@@ -59,3 +59,13 @@ jobs:
               --output /out/13_MANAGEMENT-erc.rpt \
               hardware/kicad/13_MANAGEMENT/13_MANAGEMENT.kicad_sch
           test -f /tmp/retrosbc-kicad/13_MANAGEMENT-erc.rpt
+      - name: Upload KiCad qualification artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: management-kicad-qualification
+          path: |
+            /tmp/retrosbc-kicad/13_MANAGEMENT.pdf
+            /tmp/retrosbc-kicad/13_MANAGEMENT.net
+            /tmp/retrosbc-kicad/13_MANAGEMENT-erc.rpt
+          if-no-files-found: error
+          retention-days: 14
