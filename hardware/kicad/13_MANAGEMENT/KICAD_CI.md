@@ -3,7 +3,7 @@
 The management schematic is validated with the official KiCad container and
 `kicad-cli`.
 
-Pinned CI baseline: **KiCad 10.0.6**.
+Pinned CI baseline: **KiCad 9.0.6**.
 
 The first gate deliberately performs a real schematic parse by exporting the
 management sheet to PDF. This catches native file-format/parser failures before
