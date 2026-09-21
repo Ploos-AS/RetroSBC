@@ -15,7 +15,7 @@ permissions:
   contents: read
 
 jobs:
-  ecp5-85k-smoke:
+  ecp5-toolchain-smoke:
     runs-on: ubuntu-latest
     container:
       image: hdlc/impl:latest
@@ -25,11 +25,21 @@ jobs:
         run: |
           yosys -V
           nextpnr-ecp5 --version
-      - name: Synthesize ECP5 smoke RTL
+      - name: Install Icarus Verilog
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends iverilog
+
+      - name: Qualify board-neutral RetroCore RTL
+        run: |
+          make -C fpga/rtl test
+          make -C fpga/rtl synth
+
+      - name: Synthesize synthetic ECP5 85K smoke RTL
         run: |
           mkdir -p build
           yosys -l build/yosys.log -p 'read_verilog fpga/qualification/ecp5_85k_smoke.v; synth_ecp5 -top ecp5_85k_smoke -json build/smoke.json'
-      - name: Validate 85K target is available
+      - name: Validate synthetic 85K toolchain target is available
         run: |
           nextpnr-ecp5 --help 2>&1 | tee build/nextpnr-help.txt
           grep -Eq -- '--um5g-85k|--85k' build/nextpnr-help.txt
@@ -44,11 +54,6 @@ jobs:
       - name: Synthesize SDR SDRAM controller
         run: |
           yosys -l build/sdram-controller-yosys.log -p 'read_verilog fpga/retrocore/platform/sdram_controller.v fpga/retrocore/platform/sdram_controller_qual_top.v; synth_ecp5 -top sdram_controller_qual_top -json build/sdram-controller.json'
-
-      - name: Install Icarus Verilog
-        run: |
-          apt-get update
-          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends iverilog
 
       - name: Simulate SDRAM controller protocol
         run: |
@@ -80,5 +85,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: ecp5-85k-smoke-logs
+          name: ecp5-toolchain-smoke-logs
           path: build/
