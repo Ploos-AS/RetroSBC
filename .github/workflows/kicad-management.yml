@@ -47,6 +47,8 @@ jobs:
               --output /out/13_MANAGEMENT.net \
               hardware/kicad/13_MANAGEMENT/13_MANAGEMENT.kicad_sch
           test -s /tmp/retrosbc-kicad/13_MANAGEMENT.net
+      - name: Verify scaffold netlist baseline
+        run: python3 tools/check_management_empty_netlist_baseline.py /tmp/retrosbc-kicad/13_MANAGEMENT.net
       - name: Run KiCad ERC
         run: |
           mkdir -p /tmp/retrosbc-kicad
