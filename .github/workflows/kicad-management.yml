@@ -21,8 +21,10 @@ jobs:
         run: docker pull kicad/kicad:9.0.6
       - name: KiCad version
         run: docker run --rm kicad/kicad:9.0.6 kicad-cli version
-      - name: Slice A preflight
-        run: python3 tools/check_management_native_transition_v2.py
+      - name: Native Slice A source contract
+        run: |
+          python3 tools/check_rp2354b_power_capture.py
+          test -s hardware/kicad/13_MANAGEMENT/RetroSBC-management.kicad_sym
       - name: Parse management schematic by exporting PDF
         run: |
           mkdir -p /tmp/retrosbc-kicad
