@@ -18,9 +18,12 @@ Leading candidate:
 
 - Lattice ECP5UM family
 - approximately 45K LUT class
-- SERDES-capable variant where required
+- Rev A FPGA baseline: `LFE5UM-45F-7BG381C`
+- CABGA-381 (17 x 17 mm), 203 user I/O
+- commercial temperature grade (0 C to +85 C junction)
+- SERDES-capable ECP5UM variant
 
-M1 must verify exact part/package, transceiver capability, PCIe feasibility, I/O-bank allocation, voltage requirements, configuration storage and availability.
+The Rev A FPGA baseline is now locked at the device/package/speed-grade level. This does not freeze pin assignment, bank allocation, transceiver usage or board constraints; those remain schematic/PCB qualification work. Sourcing must be rechecked before procurement or a production release.
 
 ## Target interfaces
 
