@@ -1,0 +1,30 @@
+name: KiCad management schematic gate
+
+on:
+  push:
+    paths:
+      - 'hardware/kicad/13_MANAGEMENT/**'
+      - 'tools/check_management_slice_a_preflight.py'
+      - '.github/workflows/kicad-management.yml'
+  pull_request:
+    paths:
+      - 'hardware/kicad/13_MANAGEMENT/**'
+      - 'tools/check_management_slice_a_preflight.py'
+      - '.github/workflows/kicad-management.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    container:
+      image: kicad/kicad:10.0.6
+    steps:
+      - uses: actions/checkout@v4
+      - name: KiCad version
+        run: kicad-cli version
+      - name: Slice A preflight
+        run: python3 tools/check_management_slice_a_preflight.py
+      - name: Parse management schematic by exporting PDF
+        run: |
+          mkdir -p /tmp/retrosbc-kicad
+          kicad-cli sch export pdf             --output /tmp/retrosbc-kicad/13_MANAGEMENT.pdf             hardware/kicad/13_MANAGEMENT/13_MANAGEMENT.kicad_sch
+          test -s /tmp/retrosbc-kicad/13_MANAGEMENT.pdf
