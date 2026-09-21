@@ -22,7 +22,7 @@ jobs:
       - name: KiCad version
         run: docker run --rm kicad/kicad:9.0.6 kicad-cli version
       - name: Slice A preflight
-        run: python3 tools/check_management_slice_a_preflight.py
+        run: python3 tools/check_management_native_transition_v2.py
       - name: Parse management schematic by exporting PDF
         run: |
           mkdir -p /tmp/retrosbc-kicad
@@ -47,8 +47,8 @@ jobs:
               --output /out/13_MANAGEMENT.net \
               hardware/kicad/13_MANAGEMENT/13_MANAGEMENT.kicad_sch
           test -s /tmp/retrosbc-kicad/13_MANAGEMENT.net
-      - name: Verify scaffold netlist baseline
-        run: python3 tools/check_management_empty_netlist_baseline.py /tmp/retrosbc-kicad/13_MANAGEMENT.net
+      - name: Verify native Slice A netlist
+        run: python3 tools/check_management_native_netlist.py /tmp/retrosbc-kicad/13_MANAGEMENT.net
       - name: Run KiCad ERC
         run: |
           mkdir -p /tmp/retrosbc-kicad
