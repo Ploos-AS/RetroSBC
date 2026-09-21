@@ -63,6 +63,11 @@ jobs:
               --output /out/13_MANAGEMENT-erc.rpt \
               hardware/kicad/13_MANAGEMENT/13_MANAGEMENT.kicad_sch
           test -f /tmp/retrosbc-kicad/13_MANAGEMENT-erc.rpt
+          cat /tmp/retrosbc-kicad/13_MANAGEMENT-erc.rpt
+          if grep -Eq 'Errors [1-9][0-9]*' /tmp/retrosbc-kicad/13_MANAGEMENT-erc.rpt; then
+            echo "ERC contains errors"
+            exit 1
+          fi
       - name: Upload KiCad qualification artifacts
         uses: actions/upload-artifact@v4
         with:
