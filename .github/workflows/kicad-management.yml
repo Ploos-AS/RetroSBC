@@ -15,12 +15,12 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    container:
-      image: kicad/kicad:9.0.6
     steps:
       - uses: actions/checkout@v4
+      - name: Pull KiCad CLI image
+        run: docker pull kicad/kicad:9.0.6
       - name: KiCad version
-        run: kicad-cli version
+        run: docker run --rm kicad/kicad:9.0.6 kicad-cli version
       - name: Slice A preflight
         run: python3 tools/check_management_slice_a_preflight.py
       - name: Parse management schematic by exporting PDF
