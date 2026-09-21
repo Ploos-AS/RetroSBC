@@ -35,3 +35,27 @@ jobs:
               --output /out/13_MANAGEMENT.pdf \
               hardware/kicad/13_MANAGEMENT/13_MANAGEMENT.kicad_sch
           test -s /tmp/retrosbc-kicad/13_MANAGEMENT.pdf
+      - name: Export native management netlist
+        run: |
+          mkdir -p /tmp/retrosbc-kicad
+          chmod 0777 /tmp/retrosbc-kicad
+          docker run --rm \
+            -v "$PWD:/work" -w /work \
+            -v /tmp/retrosbc-kicad:/out \
+            kicad/kicad:9.0.6 \
+            kicad-cli sch export netlist \
+              --output /out/13_MANAGEMENT.net \
+              hardware/kicad/13_MANAGEMENT/13_MANAGEMENT.kicad_sch
+          test -s /tmp/retrosbc-kicad/13_MANAGEMENT.net
+      - name: Run KiCad ERC
+        run: |
+          mkdir -p /tmp/retrosbc-kicad
+          chmod 0777 /tmp/retrosbc-kicad
+          docker run --rm \
+            -v "$PWD:/work" -w /work \
+            -v /tmp/retrosbc-kicad:/out \
+            kicad/kicad:9.0.6 \
+            kicad-cli sch erc \
+              --output /out/13_MANAGEMENT-erc.rpt \
+              hardware/kicad/13_MANAGEMENT/13_MANAGEMENT.kicad_sch
+          test -f /tmp/retrosbc-kicad/13_MANAGEMENT-erc.rpt
