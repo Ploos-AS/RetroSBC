@@ -69,6 +69,7 @@ jobs:
             exit 1
           fi
       - name: Upload KiCad qualification artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: management-kicad-qualification
