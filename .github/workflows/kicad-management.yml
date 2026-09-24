@@ -68,6 +68,11 @@ jobs:
               if not re.search(pattern, text, re.S):
                   raise SystemExit(f"{ref}: missing or wrong value; expected {value!r}")
           print("Native USB passive capture: PASS")
+          required_nets = ["MGMT_USB_DP", "MGMT_USB_DM", "USB_DP_CONN", "USB_DM_CONN", "USB_CC1", "USB_CC2"]
+          for net in required_nets:
+              if not re.search(rf'\(name "{re.escape(net)}"\)', text):
+                  raise SystemExit(f"Missing native USB net: {net}")
+          print("Native USB net naming: PASS")
           PY
 
       - name: Run KiCad ERC
