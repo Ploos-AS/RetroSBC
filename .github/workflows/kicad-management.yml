@@ -53,12 +53,6 @@ jobs:
         run: python3 tools/check_management_native_netlist.py /tmp/retrosbc-kicad/13_MANAGEMENT.net
       - name: Verify native USB passive capture
         run: |
-          for ref in R_USB_DP R_USB_DM R_CC1 R_CC2; do
-            grep -q "<ref>$ref</ref>" /tmp/retrosbc-kicad/13_MANAGEMENT.net || {
-              echo "Missing native USB passive: $ref"
-              exit 1
-            }
-          done
           python3 - <<'PY'
           import xml.etree.ElementTree as ET
           root = ET.parse("/tmp/retrosbc-kicad/13_MANAGEMENT.net").getroot()
