@@ -54,12 +54,9 @@ jobs:
       - name: Verify native USB passive capture
         run: |
           python3 - <<'PY'
-          import xml.etree.ElementTree as ET
-          root = ET.parse("/tmp/retrosbc-kicad/13_MANAGEMENT.net").getroot()
-          components = {
-              comp.findtext("ref"): comp.findtext("value")
-              for comp in root.findall("./components/comp")
-          }
+          import re
+          from pathlib import Path
+          text = Path("/tmp/retrosbc-kicad/13_MANAGEMENT.net").read_text()
           expected = {
               "R_USB_DP": "27R",
               "R_USB_DM": "27R",
@@ -67,10 +64,10 @@ jobs:
               "R_CC2": "5.1k 1%",
           }
           for ref, value in expected.items():
-              actual = components.get(ref)
-              if actual != value:
-                  raise SystemExit(f"{ref}: expected {value!r}, got {actual!r}")
-          print("Native USB passive values: PASS")
+              pattern = rf'\(comp \(ref "{re.escape(ref)}"\).*?\(value "{re.escape(value)}"\)'
+              if not re.search(pattern, text, re.S):
+                  raise SystemExit(f"{ref}: missing or wrong value; expected {value!r}")
+          print("Native USB passive capture: PASS")
           PY
 
       - name: Run KiCad ERC
