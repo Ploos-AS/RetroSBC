@@ -73,7 +73,7 @@ jobs:
           # tracked separately until the complete USB path is materialized.
           required_nets = ["USB_DP_CONN", "USB_DM_CONN", "USB_CC1", "USB_CC2"]
           for net in required_nets:
-              if not re.search(rf'\(name "{re.escape(net)}"\)', text):
+              if not re.search(rf'\(name "/?{re.escape(net)}"\)', text):
                   raise SystemExit(f"Missing native USB net: {net}")
           print("Native USB connector-side net naming: PASS")
           PY
