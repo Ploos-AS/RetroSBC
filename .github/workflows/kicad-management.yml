@@ -21,12 +21,6 @@ jobs:
         run: docker pull kicad/kicad:9.0.6
       - name: KiCad version
         run: docker run --rm kicad/kicad:9.0.6 kicad-cli version
-      - name: Install project-local KiCad library tables
-        run: |
-          mkdir -p ~/.config/kicad/9.0
-          cp hardware/kicad/13_MANAGEMENT/sym-lib-table ~/.config/kicad/9.0/sym-lib-table
-          cp hardware/kicad/13_MANAGEMENT/fp-lib-table ~/.config/kicad/9.0/fp-lib-table
-
       - name: Native Slice A source contract
         run: |
           python3 tools/check_rp2354b_power_capture.py
