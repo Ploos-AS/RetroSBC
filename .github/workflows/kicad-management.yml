@@ -51,6 +51,17 @@ jobs:
           test -s /tmp/retrosbc-kicad/13_MANAGEMENT.net
       - name: Verify native Slice A netlist
         run: python3 tools/check_management_native_netlist.py /tmp/retrosbc-kicad/13_MANAGEMENT.net
+      - name: Verify native USB passive capture
+        run: |
+          for ref in R_USB_DP R_USB_DM R_CC1 R_CC2; do
+            grep -q "<ref>$ref</ref>" /tmp/retrosbc-kicad/13_MANAGEMENT.net || {
+              echo "Missing native USB passive: $ref"
+              exit 1
+            }
+          done
+          grep -q "<value>27R</value>" /tmp/retrosbc-kicad/13_MANAGEMENT.net
+          grep -q "<value>5.1k 1%</value>" /tmp/retrosbc-kicad/13_MANAGEMENT.net
+
       - name: Run KiCad ERC
         run: |
           mkdir -p /tmp/retrosbc-kicad
