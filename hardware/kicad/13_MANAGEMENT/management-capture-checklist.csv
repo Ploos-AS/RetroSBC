@@ -10,8 +10,8 @@ STACKED_FLASH_POLICY,U_MGMT,yes,LOCKED,RP2354B integrated 2 MiB default
 EXTERNAL_FLASH,U_MGMT,no,DNI_BASELINE,Only intentional secondary flash
 USB_DM_PAD66,USB,yes,BOUND,Official QFN-80 pinout
 USB_DP_PAD67,USB,yes,BOUND,Official QFN-80 pinout
-USB_DM_SERIES_27R,USB,yes,DEFINED,Official RP2350 hardware design guide\nUSB_DP_SERIES_27R,USB,yes,DEFINED,Official RP2350 hardware design guide\nCC1_RD_5K1,USB,yes,DEFINED,USB-C UFP contract
-CC2_RD_5K1,USB,yes,DEFINED,USB-C UFP contract
+USB_DM_SERIES_27R,USB,yes,CAPTURED_NATIVE,Official RP2350 hardware design guide\nUSB_DP_SERIES_27R,USB,yes,CAPTURED_NATIVE,Official RP2350 hardware design guide\nCC1_RD_5K1,USB,yes,CAPTURED_NATIVE,USB-C UFP contract
+CC2_RD_5K1,USB,yes,CAPTURED_NATIVE,USB-C UFP contract
 USB_ESD,USB,yes,PENDING,Select qualified low-capacitance array
 VBUS_SENSE,USB,yes,PENDING,No-back-power review
 VBUS_SERVICE_POWER,USB,no,DNI_BASELINE,Optional isolated service-only power
