@@ -6,3 +6,4 @@ J_SWD_PIN3,MGMT_RUN / nRESET,REFERENCE_LOCK,Tag-Connect TC2030-CTX datasheet,Res
 J_SWD_PIN4,MGMT_SWCLK,REFERENCE_LOCK,Tag-Connect TC2030-CTX datasheet,SWCLK/TCK
 J_SWD_PIN5,GND,REFERENCE_LOCK,Tag-Connect TC2030-CTX datasheet,Also maps debugger GNDDetect
 J_SWD_PIN6,SWO,REFERENCE_LOCK,Tag-Connect TC2030-CTX datasheet,Optional for current RP2354B recovery contract; do not repurpose
+J_SWD_MECHANICS,TC2030 legged target footprint,REFERENCE_LOCK,Tag-Connect ARM Cortex solutions,Development-oriented hands-free retention; no-legs cable remains usable with legged footprint per vendor guidance
