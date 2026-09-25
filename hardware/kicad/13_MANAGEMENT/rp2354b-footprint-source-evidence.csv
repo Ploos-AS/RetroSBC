@@ -1,0 +1,17 @@
+parameter,value,unit,source,source_location,status,notes
+package,QFN-80 B-family,,RP2350 Datasheet,§1.2.1.2 / Figure 3,VERIFIED,
+body_x,10,mm,RP2350 Datasheet,§1.2.1.2 / Figure 3,VERIFIED,Reduced-ePad QFN-80
+body_y,10,mm,RP2350 Datasheet,§1.2.1.2 / Figure 3,VERIFIED,Reduced-ePad QFN-80
+perimeter_pitch,0.4,mm,RP2350 Datasheet,§1.2.1.2 / Figure 3,VERIFIED,
+perimeter_pad_count,80,,RP2350 Datasheet,§14.8.1.2 / Figure 149,VERIFIED,
+exposed_pad,EP/GND,,RP2350 Datasheet,§1.2.1.2 / Figure 3; §14.8.1.2,VERIFIED,Single external ground connection
+lead_width,,mm,RP2350 Datasheet,§1.2.1.2 package drawing,IMAGE_REVIEW_REQUIRED,Dimension is graphical and must be transcribed from the dimensioned drawing
+lead_length,,mm,RP2350 Datasheet,§1.2.1.2 package drawing,IMAGE_REVIEW_REQUIRED,
+terminal_span,,mm,RP2350 Datasheet,§1.2.1.2 package drawing,IMAGE_REVIEW_REQUIRED,
+ep_x,,mm,RP2350 Datasheet,§1.2.1.2 package drawing,IMAGE_REVIEW_REQUIRED,
+ep_y,,mm,RP2350 Datasheet,§1.2.1.2 package drawing,IMAGE_REVIEW_REQUIRED,
+land_x,,mm,Raspberry Pi hardware-design guidance,RP2350B Minimal KiCad / PCB,REFERENCE_REVIEW_REQUIRED,Do not infer from package nominal dimensions
+land_y,,mm,Raspberry Pi hardware-design guidance,RP2350B Minimal KiCad / PCB,REFERENCE_REVIEW_REQUIRED,
+mask_expansion,,mm,Raspberry Pi hardware-design guidance,RP2350B Minimal KiCad / PCB,REFERENCE_REVIEW_REQUIRED,
+paste_strategy,,Raspberry Pi hardware-design guidance,RP2350B Minimal KiCad / PCB,REFERENCE_REVIEW_REQUIRED,Review exposed-pad stencil strategy
+pin1_mark,,Raspberry Pi hardware-design guidance,RP2350B Minimal KiCad / PCB,REFERENCE_REVIEW_REQUIRED,
