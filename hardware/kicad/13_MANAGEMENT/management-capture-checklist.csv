@@ -15,9 +15,9 @@ CC2_RD_5K1,USB,yes,CAPTURED_NATIVE,USB-C UFP contract
 USB_ESD,USB,yes,PENDING,Select qualified low-capacitance array
 VBUS_SENSE,USB,yes,PENDING,No-back-power review
 VBUS_SERVICE_POWER,USB,no,DNI_BASELINE,Optional isolated service-only power
-RUN_RESET,DEBUG,yes,BOUND_NATIVE,Official reference design
-SWDIO,DEBUG,yes,BOUND_NATIVE,Official package/reference
-SWCLK,DEBUG,yes,BOUND_NATIVE,Official package/reference
+RUN_RESET,DEBUG,yes,PIN_IDENTIFIED,Official reference design
+SWDIO,DEBUG,yes,PIN_IDENTIFIED,Official package/reference
+SWCLK,DEBUG,yes,PIN_IDENTIFIED,Official package/reference
 SWD_RECOVERY_ACCESS,DEBUG,yes,PENDING,Tag-connect/test-pad capture
 ERC,QUALIFICATION,yes,PENDING,KiCad ERC
 REFERENCE_SIDE_BY_SIDE,QUALIFICATION,yes,PENDING,Compare official Minimal B
