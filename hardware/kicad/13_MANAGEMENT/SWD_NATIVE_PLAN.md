@@ -27,3 +27,22 @@ Tag-Connect footprint dimensions rather than drawn from memory.
 The next electrical capture shall wire U_MGMT pads 33/34/35 to J_SWD pins
 4/2/3 respectively, pin 1 to MGMT_3V3 and pin 5 to GND. Do not mark J_SWD
 CAPTURED_NATIVE until the exported netlist proves these mappings.
+
+## Authoritative mapping confirmation
+
+Tag-Connect's TC2030-CTX documentation confirms the six target contacts as
+1 VCC/VTREF, 2 SWDIO/TMS, 3 nRESET, 4 SWCLK/TCK, 5 GND/GNDDetect and
+6 SWO/TDO.
+
+For RetroSBC the resulting native netlist contract is:
+
+- J_SWD.1 = MGMT_3V3
+- J_SWD.2 = MGMT_SWDIO
+- J_SWD.3 = MGMT_RUN
+- J_SWD.4 = MGMT_SWCLK
+- J_SWD.5 = GND
+- J_SWD.6 = SWO_RESERVED
+
+The electrical symbol can be captured before the physical footprint geometry,
+but the footprint property shall remain explicitly unresolved until the
+official TC2030 legged footprint drawing has been transcribed and checked.
