@@ -21,8 +21,13 @@ jobs:
         run: docker pull kicad/kicad:9.0.6
       - name: KiCad version
         run: docker run --rm kicad/kicad:9.0.6 kicad-cli version
-      - name: Slice A preflight
-        run: python3 tools/check_management_slice_a_preflight.py
+      - name: TC2030 footprint source lock
+        run: python3 tools/check_tc2030_footprint_source.py
+
+      - name: Native Slice A source contract
+        run: |
+          python3 tools/check_rp2354b_power_capture.py
+          test -s hardware/kicad/13_MANAGEMENT/RetroSBC-management.kicad_sym
       - name: Parse management schematic by exporting PDF
         run: |
           mkdir -p /tmp/retrosbc-kicad
@@ -47,8 +52,27 @@ jobs:
               --output /out/13_MANAGEMENT.net \
               hardware/kicad/13_MANAGEMENT/13_MANAGEMENT.kicad_sch
           test -s /tmp/retrosbc-kicad/13_MANAGEMENT.net
-      - name: Verify scaffold netlist baseline
-        run: python3 tools/check_management_empty_netlist_baseline.py /tmp/retrosbc-kicad/13_MANAGEMENT.net
+      - name: Verify native Slice A netlist
+        run: python3 tools/check_management_native_netlist.py /tmp/retrosbc-kicad/13_MANAGEMENT.net
+      - name: Verify native USB passive capture
+        run: |
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          text = Path("/tmp/retrosbc-kicad/13_MANAGEMENT.net").read_text()
+          expected = {
+              "R_USB_DP": "27R",
+              "R_USB_DM": "27R",
+              "R_CC1": "5.1k 1%",
+              "R_CC2": "5.1k 1%",
+          }
+          for ref, value in expected.items():
+              pattern = rf'\(comp \(ref "{re.escape(ref)}"\).*?\(value "{re.escape(value)}"\)'
+              if not re.search(pattern, text, re.S):
+                  raise SystemExit(f"{ref}: missing or wrong value; expected {value!r}")
+          print("Native USB passive capture: PASS")
+          PY
+
       - name: Run KiCad ERC
         run: |
           mkdir -p /tmp/retrosbc-kicad
@@ -61,7 +85,13 @@ jobs:
               --output /out/13_MANAGEMENT-erc.rpt \
               hardware/kicad/13_MANAGEMENT/13_MANAGEMENT.kicad_sch
           test -f /tmp/retrosbc-kicad/13_MANAGEMENT-erc.rpt
+          cat /tmp/retrosbc-kicad/13_MANAGEMENT-erc.rpt
+          if grep -Eq 'Errors [1-9][0-9]*' /tmp/retrosbc-kicad/13_MANAGEMENT-erc.rpt; then
+            echo "ERC contains errors"
+            exit 1
+          fi
       - name: Upload KiCad qualification artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: management-kicad-qualification

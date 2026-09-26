@@ -1,0 +1,13 @@
+item,value,status,source,notes
+FOOTPRINT,TC2030-IDC-FP legged,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,Official legged target PCB footprint
+CONTACT_PAD_DIAMETER,0.787 mm +/- 0.076,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,Conductive contact pads; no solder paste
+ALIGNMENT_HOLE_DIAMETER,0.991 mm +/- 0.076,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,Non-plated alignment holes
+LEG_LATCH_HOLE_DIAMETER,2.375 mm +/- 0.076,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,Non-plated leg latch holes
+CONTACT_PITCH,1.270 mm,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,Drawing dimension
+LEG_PITCH,2.540 mm,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,Drawing dimension
+CONTACT_ROW_SPAN,5.080 mm,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,Drawing dimension
+KEEP_OUT,required,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,No tracks or vias in shaded keep-out
+CONTACT_CLEARANCE,0.020 in minimum,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,No other track or signal within clearance of contact pad
+SOLDER_PASTE,none on contact pads,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,Stencil openings prohibited on contacts
+FINGER_ACCESS,required from indicated sides,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,Mechanical service clearance
+BOM_LOAD,DNL,REFERENCE_LOCK,Tag-Connect footprint guidance,Footprint is PCB pads/holes; no connector component loaded
