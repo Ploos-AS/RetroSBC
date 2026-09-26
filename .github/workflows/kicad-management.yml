@@ -21,6 +21,9 @@ jobs:
         run: docker pull kicad/kicad:9.0.6
       - name: KiCad version
         run: docker run --rm kicad/kicad:9.0.6 kicad-cli version
+      - name: TC2030 footprint source lock
+        run: python3 tools/check_tc2030_footprint_source.py
+
       - name: Native Slice A source contract
         run: |
           python3 tools/check_rp2354b_power_capture.py
