@@ -29,6 +29,7 @@ jobs:
           python3 tools/generate_tc2030_footprint.py
           python3 tools/check_tc2030_generated_footprint.py
           git diff --exit-code -- hardware/kicad/13_MANAGEMENT/TC2030-IDC-FP.kicad_mod
+          test -z "$(git status --porcelain --untracked-files=all -- hardware/kicad/13_MANAGEMENT/TC2030-IDC-FP.kicad_mod)"
 
       - name: Native Slice A source contract
         run: |
