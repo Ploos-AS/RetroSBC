@@ -38,6 +38,25 @@ jobs:
           git diff --exit-code -- hardware/kicad/13_MANAGEMENT/generated-jswd-capture.kicad_sexpr
           test -z "$(git status --porcelain --untracked-files=all -- hardware/kicad/13_MANAGEMENT/generated-jswd-capture.kicad_sexpr)"
 
+      - name: Parse disposable J_SWD schematic
+        run: |
+          mkdir -p /tmp/retrosbc-kicad
+          chmod 0777 /tmp/retrosbc-kicad
+          python3 tools/materialize_management_jswd_test.py
+          docker run --rm \
+            -v "$PWD:/work" \
+            -v "/tmp/retrosbc-kicad:/out" \
+            -w /work \
+            kicad/kicad:9.0.6 \
+            kicad-cli sch export pdf -o /out/J_SWD_PARSE_TEST.pdf /out/J_SWD_PARSE_TEST.kicad_sch
+          docker run --rm \
+            -v "$PWD:/work" \
+            -v "/tmp/retrosbc-kicad:/out" \
+            -w /work \
+            kicad/kicad:9.0.6 \
+            kicad-cli sch export netlist -o /out/J_SWD_PARSE_TEST.net /out/J_SWD_PARSE_TEST.kicad_sch
+          grep -q '<ref>J_SWD</ref>' /tmp/retrosbc-kicad/J_SWD_PARSE_TEST.net
+
       - name: Native Slice A source contract
         run: |
           python3 tools/check_rp2354b_power_capture.py
