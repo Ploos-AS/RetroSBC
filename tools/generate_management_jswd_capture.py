@@ -42,6 +42,7 @@ for n, name, y in [
 s += ['  )',')','',
 '(symbol (lib_id "RetroSBC-management:TC2030_CTX_SWD") (at 205 80 0) (unit 1)',
 '  (exclude_from_sim no) (in_bom no) (on_board no)',
+'  (dnp yes)',
 f'  (uuid {UUID})',
 '  (property "Reference" "J_SWD" (at 205 68 0) (effects (font (size 1.27 1.27))))',
 '  (property "Value" "TC2030-CTX SWD" (at 205 71 0) (effects (font (size 1.27 1.27))))',
