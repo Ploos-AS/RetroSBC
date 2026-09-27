@@ -11,3 +11,7 @@ CONTACT_CLEARANCE,0.020 in minimum,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datashe
 SOLDER_PASTE,none on contact pads,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,Stencil openings prohibited on contacts
 FINGER_ACCESS,required from indicated sides,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,Mechanical service clearance
 BOM_LOAD,DNL,REFERENCE_LOCK,Tag-Connect footprint guidance,Footprint is PCB pads/holes; no connector component loaded
+ALIGNMENT_HOLE_X,-2.540;0;2.540 mm,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,Bottom-view drawing
+ALIGNMENT_HOLE_Y,-2.540 mm,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,Relative generator origin
+LATCH_HOLE_X,-3.175;3.175 mm,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,Bottom-view drawing
+LATCH_HOLE_Y,-0.635 mm,REFERENCE_LOCK,Tag-Connect TC2030-IDC Datasheet Rev B,Relative generator origin
