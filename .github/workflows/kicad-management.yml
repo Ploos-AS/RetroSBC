@@ -24,6 +24,12 @@ jobs:
       - name: TC2030 footprint source lock
         run: python3 tools/check_tc2030_footprint_source.py
 
+      - name: Generate and verify TC2030 footprint
+        run: |
+          python3 tools/generate_tc2030_footprint.py
+          python3 tools/check_tc2030_generated_footprint.py
+          git diff --exit-code -- hardware/kicad/13_MANAGEMENT/TC2030-IDC-FP.kicad_mod
+
       - name: Native Slice A source contract
         run: |
           python3 tools/check_rp2354b_power_capture.py
