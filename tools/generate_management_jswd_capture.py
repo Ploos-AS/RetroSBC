@@ -23,7 +23,7 @@ pins = [
 s = [
 '(symbol "RetroSBC-management:TC2030_CTX_SWD"',
 '  (pin_names (offset 1.016))',
-'  (exclude_from_sim no) (in_bom no) (on_board yes)',
+'  (exclude_from_sim no) (in_bom no) (on_board no)',
 '  (property "Reference" "J" (at 0 10.16 0) (effects (font (size 1.27 1.27))))',
 '  (property "Value" "TC2030-CTX SWD" (at 0 7.62 0) (effects (font (size 1.27 1.27))))',
 '  (property "Footprint" "RetroSBC:TC2030-IDC-FP" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))',
@@ -41,7 +41,7 @@ for n, name, y in [
     s.append(f'    (pin passive line (at -12.7 {y} 0) (length 5.08) (name "{name}" (effects (font (size 1.0 1.0)))) (number "{n}" (effects (font (size 1.0 1.0)))))')
 s += ['  )',')','',
 '(symbol (lib_id "RetroSBC-management:TC2030_CTX_SWD") (at 205 80 0) (unit 1)',
-'  (exclude_from_sim no) (in_bom no) (on_board yes)',
+'  (exclude_from_sim no) (in_bom no) (on_board no)',
 f'  (uuid {UUID})',
 '  (property "Reference" "J_SWD" (at 205 68 0) (effects (font (size 1.27 1.27))))',
 '  (property "Value" "TC2030-CTX SWD" (at 205 71 0) (effects (font (size 1.27 1.27))))',
