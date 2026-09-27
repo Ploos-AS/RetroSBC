@@ -52,7 +52,9 @@ f'  (uuid {UUID})',
 for n,u in pins:
     s.append(f'  (pin "{n}" (uuid {u}))')
 s += [
-f'  (instances (project "{PROJECT}" (path "/{ROOT}/{UUID}" (reference "J_SWD") (unit 1))))',
+f'  (instances (project "{PROJECT}"',
+f'    (path "/{ROOT}/{UUID}" (reference "J_SWD") (unit 1))',
+'  ))',
 ')','',
 '# net contract: 1=MGMT_3V3 2=MGMT_SWDIO 3=MGMT_RUN 4=MGMT_SWCLK 5=GND 6=SWO_RESERVED',
 ]
