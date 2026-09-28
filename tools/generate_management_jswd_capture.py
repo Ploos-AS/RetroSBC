@@ -41,8 +41,7 @@ for n, name, y in [
     s.append(f'    (pin passive line (at -12.7 {y} 0) (length 5.08) (name "{name}" (effects (font (size 1.0 1.0)))) (number "{n}" (effects (font (size 1.0 1.0)))))')
 s += ['  )',')','',
 '(symbol (lib_id "RetroSBC-management:TC2030_CTX_SWD") (at 205 80 0) (unit 1)',
-'  (exclude_from_sim no) (in_bom no) (on_board no)',
-'  (dnp yes)',
+'  (exclude_from_sim no) (in_bom no) (on_board yes)',
 f'  (uuid {UUID})',
 '  (property "Reference" "J_SWD" (at 205 68 0) (effects (font (size 1.27 1.27))))',
 '  (property "Value" "TC2030-CTX SWD" (at 205 71 0) (effects (font (size 1.27 1.27))))',
@@ -53,9 +52,7 @@ f'  (uuid {UUID})',
 for n,u in pins:
     s.append(f'  (pin "{n}" (uuid {u}))')
 s += [
-f'  (instances (project "{PROJECT}"',
-f'    (path "/{ROOT}/{UUID}" (reference "J_SWD") (unit 1))',
-'  ))',
+f'  (instances (project "{PROJECT}" (path "/{ROOT}/{UUID}" (reference "J_SWD") (unit 1))))',
 ')','',
 '# net contract: 1=MGMT_3V3 2=MGMT_SWDIO 3=MGMT_RUN 4=MGMT_SWCLK 5=GND 6=SWO_RESERVED',
 ]
