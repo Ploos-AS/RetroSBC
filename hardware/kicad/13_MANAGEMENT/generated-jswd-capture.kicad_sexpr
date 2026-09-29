@@ -1,7 +1,7 @@
 (symbol "RetroSBC-management:TC2030_CTX_SWD"
   (pin_names (offset 1.016))
   (exclude_from_sim no) (in_bom no) (on_board no)
-  (property "Reference" "J" (at 0 10.16 0) (effects (font (size 1.27 1.27))))
+  (property "Reference" "J?" (at 0 10.16 0) (effects (font (size 1.27 1.27))))
   (property "Value" "TC2030-CTX SWD" (at 0 7.62 0) (effects (font (size 1.27 1.27))))
   (property "Footprint" "RetroSBC:TC2030-IDC-FP" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
   (property "Datasheet" "Tag-Connect TC2030-CTX" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
