@@ -6,7 +6,8 @@ Never edits 13_MANAGEMENT.kicad_sch. CI parses the disposable file first.
 from pathlib import Path
 import re
 
-base=Path("hardware/kicad/13_MANAGEMENT/13_MANAGEMENT.kicad_sch").read_text()\n
+base=Path("hardware/kicad/13_MANAGEMENT/13_MANAGEMENT.kicad_sch").read_text()
+
 frag=Path("hardware/kicad/13_MANAGEMENT/generated-jswd-capture.kicad_sexpr").read_text()
 lib, inst = frag.split("\n\n",1)
 inst=inst.split("\n# net contract:",1)[0].strip()
