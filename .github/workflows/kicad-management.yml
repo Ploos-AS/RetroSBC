@@ -4,12 +4,12 @@ on:
   push:
     paths:
       - 'hardware/kicad/13_MANAGEMENT/**'
-      - 'tools/check_management_slice_a_preflight.py'
+      - 'tools/**'
       - '.github/workflows/kicad-management.yml'
   pull_request:
     paths:
       - 'hardware/kicad/13_MANAGEMENT/**'
-      - 'tools/check_management_slice_a_preflight.py'
+      - 'tools/**'
       - '.github/workflows/kicad-management.yml'
 
 jobs:
