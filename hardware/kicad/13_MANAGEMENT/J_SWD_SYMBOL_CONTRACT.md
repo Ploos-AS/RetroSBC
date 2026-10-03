@@ -38,3 +38,7 @@ The exported native netlist must prove:
 
 Do not change checklist status to `CAPTURED_NATIVE` until these conditions
 pass in CI.
+
+## CI diagnostics
+
+The disposable J_SWD parser/netlist test is intentionally isolated from the production schematic. CI must retain its generated schematic, PDF and ERC report on failure so annotation faults can be diagnosed without modifying `13_MANAGEMENT.kicad_sch`.
