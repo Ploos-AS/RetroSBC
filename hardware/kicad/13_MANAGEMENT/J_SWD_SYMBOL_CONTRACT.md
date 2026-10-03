@@ -42,3 +42,5 @@ pass in CI.
 ## CI diagnostics
 
 The disposable J_SWD parser/netlist test is intentionally isolated from the production schematic. CI must retain its generated schematic, PDF and ERC report on failure so annotation faults can be diagnosed without modifying `13_MANAGEMENT.kicad_sch`.
+
+CI note: Trigger repaired on `main` by PR #81; subsequent management/tool changes must exercise the current disposable J_SWD diagnostics.
