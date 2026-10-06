@@ -54,7 +54,9 @@ jobs:
             -v "/tmp/retrosbc-kicad:/out" \
             -w /work \
             kicad/kicad:9.0.6 \
-            kicad-cli sch erc --output /out/J_SWD_PARSE_TEST-erc.rpt /out/J_SWD_PARSE_TEST.kicad_sch || true\n          cat /tmp/retrosbc-kicad/J_SWD_PARSE_TEST-erc.rpt || true\n          docker run --rm \
+            kicad-cli sch erc --output /out/J_SWD_PARSE_TEST-erc.rpt /out/J_SWD_PARSE_TEST.kicad_sch || true
+          cat /tmp/retrosbc-kicad/J_SWD_PARSE_TEST-erc.rpt || true
+          docker run --rm \
             -v "$PWD:/work" \
             -v "/tmp/retrosbc-kicad:/out" \
             -w /work \
@@ -62,7 +64,20 @@ jobs:
             kicad-cli sch export netlist -o /out/J_SWD_PARSE_TEST.net /out/J_SWD_PARSE_TEST.kicad_sch
           grep -q '<ref>J_SWD</ref>' /tmp/retrosbc-kicad/J_SWD_PARSE_TEST.net
 
-      - name: Upload disposable J_SWD diagnostics\n        if: always()\n        uses: actions/upload-artifact@v4\n        with:\n          name: jswd-disposable-diagnostics\n          path: |\n            /tmp/retrosbc-kicad/J_SWD_PARSE_TEST.kicad_sch\n            /tmp/retrosbc-kicad/J_SWD_PARSE_TEST.pdf\n            /tmp/retrosbc-kicad/J_SWD_PARSE_TEST.net\n            /tmp/retrosbc-kicad/J_SWD_PARSE_TEST-erc.rpt\n          if-no-files-found: warn\n          retention-days: 14\n\n      - name: Native Slice A source contract
+      - name: Upload disposable J_SWD diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jswd-disposable-diagnostics
+          path: |
+            /tmp/retrosbc-kicad/J_SWD_PARSE_TEST.kicad_sch
+            /tmp/retrosbc-kicad/J_SWD_PARSE_TEST.pdf
+            /tmp/retrosbc-kicad/J_SWD_PARSE_TEST.net
+            /tmp/retrosbc-kicad/J_SWD_PARSE_TEST-erc.rpt
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Native Slice A source contract
         run: |
           python3 tools/check_rp2354b_power_capture.py
           test -s hardware/kicad/13_MANAGEMENT/RetroSBC-management.kicad_sym
