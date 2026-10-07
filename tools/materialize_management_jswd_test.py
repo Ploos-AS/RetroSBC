@@ -11,9 +11,6 @@ base=Path("hardware/kicad/13_MANAGEMENT/13_MANAGEMENT.kicad_sch").read_text()
 frag=Path("hardware/kicad/13_MANAGEMENT/generated-jswd-capture.kicad_sexpr").read_text()
 lib, inst = frag.split("\n\n",1)
 inst=inst.split("\n# net contract:",1)[0].strip()
-# Diagnostic A/B only: KiCad-native numeric annotation. Production contract remains J_SWD.
-inst=inst.replace('"J_SWD"', '"J1"')
-
 # Insert the generated library symbol immediately before lib_symbols closes.
 m=re.search(r'\n  \)\n  \(text "RetroSBC 13_MANAGEMENT',base)
 if not m:
