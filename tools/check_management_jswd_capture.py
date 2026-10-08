@@ -6,8 +6,9 @@ p=Path("hardware/kicad/13_MANAGEMENT/generated-jswd-capture.kicad_sexpr")
 s=p.read_text()
 required=[
     'RetroSBC-management:TC2030_CTX_SWD',
-    'Reference" "J_SWD"',
+    'Reference" "J1"',
     'Value" "TC2030-CTX SWD"',
+    '(reference "J1")',
     'Footprint" "RetroSBC:TC2030-IDC-FP"',
     '1=MGMT_3V3','2=MGMT_SWDIO','3=MGMT_RUN',
     '4=MGMT_SWCLK','5=GND','6=SWO_RESERVED',
