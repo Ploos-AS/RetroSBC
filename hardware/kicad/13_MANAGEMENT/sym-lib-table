@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "RetroSBC-management")(type "KiCad")(uri "${KIPRJMOD}/RetroSBC-management.kicad_sym")(options "")(descr "RetroSBC management-controller project symbols"))
+)
