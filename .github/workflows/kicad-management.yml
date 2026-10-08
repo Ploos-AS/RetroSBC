@@ -62,7 +62,7 @@ jobs:
             -w /work \
             kicad/kicad:9.0.6 \
             kicad-cli sch export netlist -o /out/J_SWD_PARSE_TEST.net /out/J_SWD_PARSE_TEST.kicad_sch
-          grep -q '<ref>J_SWD</ref>' /tmp/retrosbc-kicad/J_SWD_PARSE_TEST.net
+          grep -q '<ref>J1</ref>' /tmp/retrosbc-kicad/J_SWD_PARSE_TEST.net
 
       - name: Upload disposable J_SWD diagnostics
         if: always()
